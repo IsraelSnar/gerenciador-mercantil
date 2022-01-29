@@ -5,22 +5,7 @@
  */
 package trabalhomercantil;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.InputMismatchException;
-import java.util.Locale;
 import java.util.Scanner;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -34,140 +19,156 @@ public class Aplicacao {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        LerFile ler = new LerFile("D:/Faculdade/POO/TrabalhoMercantil/src/trabalhomercantil/");
-        
-        System.out.println(ler.view("funcionarios"));
-//
-//        EscreverFile write = new EscreverFile();
-//        System.out.println(write);
-        /*
-        //Locale.setDefault(Locale.US);
-//        LerFile ler = new LerFile();
-//        System.out.println(ler);
-        File file = new File("D:/Faculdade/POO/TrabalhoMercantil/src/trabalhomercantil/estoque.json");
 
-        JSONParser parser = new JSONParser();
+        String token;
+        boolean adm;
 
-        Object objeto;
+        /**
+         * Ler arquivo 'mercantil.json' e verifica se possui 0 Caso possua então
+         * apaga e inicializa a função para preencher dados da empresa Se não
+         * então apenas pega os dados e continua a proseguir a execução do
+         * programa
+         */
+        Init iniciar = new Init();
+        /**
+         * enviar true or false caso o login seja o administrador ou nao
+         */
 
-        try {
-            //Salva no objeto JSONObject o que o parse tratou do arquivo
-            //jsonObject = (JSONObject) parser.parse(new FileReader("D:/Faculdade/POO/TrabalhoMercantil/src/trabalhomercantil/estoque.json"));
-            objeto = parser.parse(new FileReader("D:/Faculdade/POO/TrabalhoMercantil/src/trabalhomercantil/estoque.json"));
-            JSONArray jsonarray = (JSONArray) objeto;
-            System.out.println("jsonarray size = " + jsonarray.size());
-            for (int i = 0; i < jsonarray.size(); i++) {
-                System.out.println("i: " + i);
-                JSONObject jsonObject = (JSONObject) jsonarray.get(i);
-                System.out.println((String) jsonObject.get("nome"));
+        /**
+         * Função de login De acordo com o acesso ele poderá fazer determinadas
+         * funções
+         */
+        Scanner leitor = new Scanner(System.in);
+
+        System.out.println("Login");
+        System.out.println("Informe usuário e senha separados por espaço");
+        System.out.print("~ ");
+
+        String line = leitor.nextLine();
+        String ui[] = line.split(" ");
+
+        if ((ui.length < 2)) {
+            if (ui[0].equals("0")) {
+                System.exit(0);
+            }
+            token = null;
+        } else {
+            System.out.println("Usuário: " + ui[0] + "\n\rSenha: " + ui[1]);
+            token = iniciar.login(ui[0], ui[1]);
+        }
+
+        SUPER:
+        while (true) {
+
+            while (token == null) {
+                System.out.println("Informe usuário e senha separados por espaço");
+                System.out.println("Ou digite 0 para finalizar o programa");
+                System.out.print("~ ");
+                line = leitor.nextLine();
+                ui = line.split(" ");
+
+                //System.out.println("tamanho do array[ui]: " + ui.length);
+                if ((ui.length < 2)) {
+                    if (ui[0].equals("0")) {
+                        System.exit(0);
+                    }
+                    System.err.println("Erro! Informe usuário e senha");
+                } else {
+                    System.out.println("$ Usuário: " + ui[0] + "\n\rSenha: " + ui[1]);
+                    token = iniciar.login(ui[0], ui[1]);
+                }
 
             }
 
-            //Salva nas variaveis os dados retirados do arquivo
-//            nome = (String) jsonObject.get("nome");
-//            sobrenome = (String) jsonObject.get("sobrenome");
-//            estado = (String) jsonObject.get("estado");
-//            pais = (String) jsonObject.get("pais");
-//            System.out.printf(
-//                    "Nome: %s\nSobrenome: %s\nEstado: %s\nPais: %s\n",
-//                    nome, sobrenome, estado, pais);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            System.out.println("Escreva 'help' para ver comandos");
+
+            OUTER:
+            while (token != null) {
+                adm = iniciar.isAdm();
+                iniciar.initRead(adm);
+                System.out.print("~ ");
+                //System.out.println("adm: " + adm + "token: " + token);
+                line = leitor.nextLine();
+                ui = line.split(" ");
+                switch (ui[0].toLowerCase()) {
+                    case "exit":
+                        break SUPER;
+                    case "show":
+                        System.out.println("mostrar dados");
+                    /**case "write":
+                        iniciar.initRead(adm);
+                        break;*/
+                    case "stock":
+                        /**
+                         * precisa de permissão
+                         */
+                        if (adm) {
+                            System.out.println("estoque:");
+                        } else {
+                            System.out.println("Não tem permissão");
+                        }
+                        break;
+                    case "balance":
+                        /**
+                         * precisa de permissão
+                         */
+                        if (adm) {
+                            System.out.println("saldo:");
+                        } else {
+                            System.out.println("Não tem permissão");
+                        }
+                        break;
+                    case "sale":
+
+                        System.out.println("venda:");
+                        break;
+                    case "cash":
+                        System.out.println("caixa:");
+                        break;
+                    /**
+                     */
+                    case "teste":
+                        System.out.println(ui[1]);
+                        break;
+                    /**
+                     */
+                    case "reset":
+                        if (adm){
+                        iniciar.reset(adm);
+                        }else{
+                            System.out.println("Não tem permissão");
+                        }
+                        break;
+                    case "help":
+                        if (adm) {
+                            System.out.println(Cor.getANSI_RED() + "$ reset: apagar todos os dados do sistema (exceto logins)" + Cor.getANSI_RESET());
+                        }
+                        System.out.println("$ exit: fechar programa");
+                        System.out.println("$ show: mostrar informações do usuário");
+                        System.out.println("$ logout: sair da conta");
+                        break;
+                    case "logout":
+                        token = null;
+                        adm = false;
+                        iniciar.logout();
+                        break OUTER;
+                    default:
+                        System.out.println("Comando invalido, digite 'help' para ver comandos");
+                        break;
+                }
+            }
         }
-//        catch (Exception e){
-//            System.err.println(e);
-//        }
 
-//        //Salva no objeto JSONObject o que o parse tratou do arquivo
-//        jsonObject = (JSONObject) parser.parse(new FileReader("saida.json"));
-//        //Salva nas variaveis os dados retirados do arquivo
-//        System.out.println((String) jsonObject.get("nome"));
-//            sobrenome = (String) jsonObject.get("sobrenome");
-//            estado = (String) jsonObject.get("estado");
-//            pais = (String) jsonObject.get("pais");
-//            System.out.printf(
-//                    "Nome: %s\nSobrenome: %s\nEstado: %s\nPais: %s\n",
-//                    nome, sobrenome, estado, pais);
-//        InputStream input = null;
-//        try {
-//            input = new FileInputStream(file);
-//
-//            int intValue;
-//            // lê o arquivo byte-a-byte e converte cada byte para um char
-//            while ((intValue = input.read()) != -1) {
-//                char ch = (char) intValue;
-//                System.out.print(ch);
-//            }
-//
-//            System.out.println();
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        finally{
-//            input.close();
-//        }
         /**
-         * essa classe funciona
+         * Funções do programa
          */
-//        try (InputStreamReader isr = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8)) {
-//
-//            // usando o método getEncoding() da classe InputStreamReader
-//            // para pegar a codificação usada no arquivo
-//            System.out.println("Codificação do arquivo: " + isr.getEncoding());
-//
-//            int intValue;
-//            // lê o arquivo caractere a caractere e imprime na tela
-//            while ((intValue = isr.read()) != -1) {
-//                char ch = (char) intValue;
-//                System.out.print(ch);
-//            }
-//
-//            System.out.println();
-//        } catch (IOException e) {
-//            System.out.println("ERRO: " + e.getMessage());
-//        }
         /**
-         *
+         * ENUM
          */
-//        try (BufferedReader br
-//                = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
-//
-//            String line;
-//
-//            while ((line = br.readLine()) != null) {
-//                System.out.println(line);
-//            }
-//
-//            System.out.println();
-//        } catch (IOException e) {
-//            System.out.println("ERRO: " + e.getMessage());
-//        }
-//        try (Scanner inputFile = new Scanner(file)) {
-//            while (inputFile.hasNext()) {
-//                String firstName = inputFile.next();
-//                String lastName = inputFile.next();
-//                byte age = inputFile.nextByte();
-//                double salary = inputFile.nextDouble();
-//
-//                System.out.printf("Name: %s, Last name: %s, Age: %d, Salary: %.2f%n",
-//                        firstName, lastName, age, salary);
-//            }
-//        } catch (InputMismatchException e) {
-//            System.out.println("Invalid input");
-//        } catch (FileNotFoundException e) {
-//            System.err.println("File not found");
-//        } catch (IOException e) {
-//            System.err.println("I/O Exception");
-//        } catch (Exception e) {
-//            System.err.println(e);
-//        }
-
+//        System.out.println(Categoria.HIGIENE);
+//        
+//        LerFile ler = new LerFile("D:/Faculdade/POO/TrabalhoMercantil/src/assets/");
+//        
+//        System.out.println(ler.view("fornecedores"));
     }
-
 }

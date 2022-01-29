@@ -2,33 +2,41 @@
     {
         "id": 1,
         "nome": "Lemuel Strelitzer",
+        "user": "lml_s",
         "cpf": "682.380.142-33",
-        "cargo": "Finance",
+        "cargo": "Caixa",
         "salario": 698.70,
-        "senha": "dfxJlOeZJ8"
+        "senha": "dfxJlOeZJ8",
+        "token": "w13mMnl332k2UtRS"
     },
     {
         "id": 2,
-        "nome": "Sasha Twidle",
-        "cpf": "656.681.953-98",
-        "cargo": "Gerente",
-        "salario": 1350.63,
-        "senha": "vK4kRTfw"
+        "nome": "Gabrielle MacKean",
+        "user": "gabMac",
+        "cpf": "719.223.868-17",
+        "cargo": "Admin",
+        "salario": null,
+        "senha": "Cxcgno6a",
+        "token": "9Tm0tFg5xMv5bU3Y"
     },
     {
         "id": 3,
-        "nome": "Gabrielle MacKean",
-        "cpf": "719.223.868-17",
-        "cargo": "Propietário",
+        "nome": "Israel Narciso",
+        "user": "israel",
+        "cpf": "719.123.868-17",
+        "cargo": "Admin",
         "salario": null,
-        "senha": "Cxcgno6a"
+        "senha": "123456",
+        "token": "9Tm0tFg5xMv5bU3Z"
     },
     {
         "id": 4,
-        "nome": "Perren Fillingham",
-        "cpf": "254.515.350-90",
-        "cargo": "Energy",
-        "salario": 618.52,
-        "senha": "DiM1CSaq1dI"
+        "nome": "João",
+        "user": "jo456",
+        "cpf": "719.123.987-17",
+        "cargo": "Caixa",
+        "salario": 1500.00,
+        "senha": "123456",
+        "token": "9Tm0tFg5xMv5bY3Z"
     }
 ]

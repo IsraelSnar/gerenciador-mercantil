@@ -18,8 +18,9 @@ public class EditJson {
      * recebe valor que vai ser inserido
      * recebe operação a fazer
      * 
+     * @param text String para editar
      */
-    public EditJson(){
+    public EditJson(String text){
         
     }
     

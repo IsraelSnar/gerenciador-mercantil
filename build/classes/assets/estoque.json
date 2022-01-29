@@ -1,0 +1,129 @@
+[
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": "Lemonade - Mandarin, 591 Ml",
+        "preco": 7.22,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006f",
+        "fornecedor": 1,
+        "nome": "Sauerkraut",
+        "preco": 1.20,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e60000070",
+        "fornecedor": 1,
+        "nome": "Sugar - Individual Portions",
+        "preco": 9.81,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e60000071",
+        "fornecedor": 1,
+        "nome": "Cucumber - Pickling Ontario",
+        "preco": 6.69,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e60000072",
+        "fornecedor": 2,
+        "nome": "Chocolate - Liqueur Cups With Foil",
+        "preco": 4.47,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": null,
+        "preco": null,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": null,
+        "preco": null,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": null,
+        "preco": null,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": null,
+        "preco": null,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": null,
+        "preco": null,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": null,
+        "preco": null,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": null,
+        "preco": null,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": null,
+        "preco": null,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {
+        "_id": "61eab0a5fc13ae0e6000006e",
+        "fornecedor": 1,
+        "nome": null,
+        "preco": null,
+        "quantidade": 76,
+        "categoria": "",
+        "peso": "g"
+    },
+    {}
+]
