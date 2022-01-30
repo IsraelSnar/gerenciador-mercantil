@@ -1,4 +1,10 @@
-public enum CategoriasEnum {
+package trabalhomercantil;
+
+/**
+ *
+ * @author João
+ */
+public enum Categorias {
     LIMPEZA,
     CONGELADOS_E_FRIOS,
     HORTIFRUTI,

@@ -5,12 +5,12 @@
 
 [![Build Status](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)](https://github.com/IsraelSnar/gerenciador-mercantil)
 
-- [Download em zip](https://github.com/IsraelSnar/gerenciador-mercantil/archive/refs/heads/master.zip)
+<!-- - [Download em zip](https://github.com/IsraelSnar/gerenciador-mercantil/archive/refs/heads/master.zip) -->
 
 ## Configuração
 Após a instalação do programa na máquina deve ser configurado a mão algumas informações de login como a do propietário e de outros funcionários
 
-[![Build Status](https://img.shields.io/static/v1?label=Java&message=passing&color=&style=plastic&logo=java)](https://github.com/IsraelSnar/gerenciador-mercantil)
+<!-- [![Build Status](https://img.shields.io/static/v1?label=Java&message=passing&color=&style=plastic&logo=java)](https://github.com/IsraelSnar/gerenciador-mercantil) -->
 
 <!-- comentário -->
 

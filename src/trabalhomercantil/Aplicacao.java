@@ -95,9 +95,11 @@ public class Aplicacao {
                         break SUPER;
                     case "show":
                         System.out.println("mostrar dados");
-                    /**case "write":
-                        iniciar.initRead(adm);
-                        break;*/
+                        break;
+                    /**
+                     * case "write": iniciar.initRead(adm);
+                        break;
+                     */
                     case "stock":
                         /**
                          * precisa de permissão
@@ -119,7 +121,6 @@ public class Aplicacao {
                         }
                         break;
                     case "sale":
-
                         System.out.println("venda:");
                         break;
                     case "cash":
@@ -133,15 +134,24 @@ public class Aplicacao {
                     /**
                      */
                     case "reset":
-                        if (adm){
-                        iniciar.reset(adm);
-                        }else{
+                        if (adm) {
+                            iniciar.reset(adm);
+                        } else {
                             System.out.println("Não tem permissão");
                         }
                         break;
+                    /*case "path":
+                        if (adm) {
+                            line = leitor.nextLine();
+                            iniciar.setPath(line);
+                        } else {
+                            System.out.println("Não tem permissão");
+                        }
+                        break;*/
                     case "help":
                         if (adm) {
                             System.out.println(Cor.getANSI_RED() + "$ reset: apagar todos os dados do sistema (exceto logins)" + Cor.getANSI_RESET());
+                            //System.out.println(Cor.getANSI_RED() + "$ path: configurar path dos arquivos" + Cor.getANSI_RESET());
                         }
                         System.out.println("$ exit: fechar programa");
                         System.out.println("$ show: mostrar informações do usuário");

@@ -31,6 +31,9 @@ public class LerFile {
         setPath(path);
     }
 
+    /**
+     * ler file
+     */
     public LerFile() {
         if (path.isEmpty()) {
             System.out.println("Vazio");

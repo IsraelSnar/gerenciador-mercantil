@@ -1,7 +1,0 @@
-escrever
-peixe
-gaz
-gas
-exit 
-exit
-testo
