@@ -1,4 +1,4 @@
-public class App {
+public class Test {
     public static void main(String[] args) throws Exception {
 
         //Mercantil m = new Mercantil("EXTRA", "Jose", "1111000823", 0);
