@@ -2,13 +2,13 @@ public class Mercantil {
     private String nome;
     private String proprietario;
     private String cnpj;
-    private float saldoConta;
+    private ContaBancaria conta;
 
     public Mercantil(String nome, String proprietario, String cnpj, float saldoConta) {
         this.nome = nome;
         this.proprietario = proprietario;
         this.cnpj = cnpj;
-        this.saldoConta = saldoConta;
+        this.conta = new ContaBancaria(saldoConta);
     }
 
     public String getNome() {
@@ -23,12 +23,28 @@ public class Mercantil {
         return proprietario;
     }
 
-    public float getSaldoConta() {
-        return saldoConta;
+    public ContaBancaria getConta() {
+        return conta;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setProprietario(String proprietario) {
+        this.proprietario = proprietario;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public void setConta(ContaBancaria conta) {
+        this.conta = conta;
     }
 
     public String toString() {
         return "Nome: " + getNome() + "\n" + "Proprietario: " + getProprietario() + "\n" + "CNPJ: " + getCnpj() + "\n"
-                + " Saldo: " + getSaldoConta();
+                + "Saldo: " + getConta().getSaldo();
     }
 }
