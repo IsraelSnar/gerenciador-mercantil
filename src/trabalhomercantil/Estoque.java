@@ -8,13 +8,13 @@ import java.util.ArrayList;
  */
 public class Estoque {
 
-    private ArrayList<Produto> produtos;
+    private ArrayList<Produto> produtos = new ArrayList<>();
 
     /**
      * Estoque
      */
     public Estoque() {
-        produtos = new ArrayList<>();
+        
     }
 
     //Adicionar Produto ao Estoque

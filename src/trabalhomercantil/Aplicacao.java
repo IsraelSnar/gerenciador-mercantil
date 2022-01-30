@@ -21,6 +21,7 @@ public class Aplicacao {
         // TODO code application logic here
 
         String token;
+        String path = null;
         boolean adm;
 
         /**
@@ -33,12 +34,19 @@ public class Aplicacao {
         /**
          * enviar true or false caso o login seja o administrador ou nao
          */
-
         /**
          * Função de login De acordo com o acesso ele poderá fazer determinadas
          * funções
          */
         Scanner leitor = new Scanner(System.in);
+
+        if (path == null) {
+            System.out.println("Informe caminho completo ate arquivos, coloque a barra no final");
+            System.out.println(Cor.getANSI_WHITE_BACKGROUND() + Cor.getANSI_RED() + "Informe caminho até pasta 'assets' com a '/' no fim" + Cor.getANSI_RESET());
+            path = leitor.nextLine();
+            iniciar.setPath(path);
+            System.out.println(Cor.getANSI_WHITE_BACKGROUND() + Cor.getANSI_BLUE() + "Obs: essa ação é temporária, existe intenção de remoção caso encontremos solução melhor" + Cor.getANSI_RESET());
+        }
 
         System.out.println("Login");
         System.out.println("Informe usuário e senha separados por espaço");
@@ -77,7 +85,6 @@ public class Aplicacao {
                     System.out.println("$ Usuário: " + ui[0] + "\n\rSenha: " + ui[1]);
                     token = iniciar.login(ui[0], ui[1]);
                 }
-
             }
 
             System.out.println("Escreva 'help' para ver comandos");
@@ -93,53 +100,69 @@ public class Aplicacao {
                 switch (ui[0].toLowerCase()) {
                     case "exit":
                         break SUPER;
-                    case "show":
+                    /*case "show":
                         System.out.println("mostrar dados");
-                        break;
+                        System.out.println("Não implementado");
+                        break;*/
                     /**
-                     * case "write": iniciar.initRead(adm);
-                        break;
+                     * case "write": iniciar.initRead(adm); break;
                      */
-                    case "stock":
+                    /*case "stock":
                         /**
                          * precisa de permissão
                          */
-                        if (adm) {
+                        /*if (adm) {
                             System.out.println("estoque:");
+                            System.out.println("Não implementado");
                         } else {
                             System.out.println("Não tem permissão");
                         }
-                        break;
-                    case "balance":
+                        break;*/
+                    /*case "product":
                         /**
                          * precisa de permissão
                          */
-                        if (adm) {
+                        /*if (adm) {
+                            System.out.println("Produtos:");
+                            Produto p = new Produto();
+                            Estoque a = new Estoque();
+                            if (ui[1].equals("new")) {
+                                p = new Produto("1234567890123", "Arroz", "1kg", 1, 5, 100, 20);
+                                a.adcionarProduto(p);
+                            } else if (ui[1].equals("show")) {
+                                a.listarProduto();
+                            }
+                        } else {
+                            System.out.println("Não tem permissão");
+                        }
+                        break;*/
+                    /*case "balance":
+                        /**
+                         * precisa de permissão
+                         */
+                        /*if (adm) {
                             System.out.println("saldo:");
+                            System.out.println("Não implementado");
                         } else {
                             System.out.println("Não tem permissão");
                         }
                         break;
                     case "sale":
                         System.out.println("venda:");
+                        System.out.println("Não implementado");
                         break;
                     case "cash":
                         System.out.println("caixa:");
+                        System.out.println("Não implementado");
                         break;
-                    /**
-                     */
-                    case "teste":
-                        System.out.println(ui[1]);
-                        break;
-                    /**
-                     */
                     case "reset":
                         if (adm) {
                             iniciar.reset(adm);
+                            System.out.println("Não totalmente implementado");
                         } else {
                             System.out.println("Não tem permissão");
                         }
-                        break;
+                        break;*/
                     /*case "path":
                         if (adm) {
                             line = leitor.nextLine();
@@ -150,12 +173,13 @@ public class Aplicacao {
                         break;*/
                     case "help":
                         if (adm) {
-                            System.out.println(Cor.getANSI_RED() + "$ reset: apagar todos os dados do sistema (exceto logins)" + Cor.getANSI_RESET());
+                            //System.out.println(Cor.getANSI_WHITE_BACKGROUND() + Cor.getANSI_RED() + "$ reset: apagar todos os dados do sistema (exceto logins)" + Cor.getANSI_RESET());
                             //System.out.println(Cor.getANSI_RED() + "$ path: configurar path dos arquivos" + Cor.getANSI_RESET());
                         }
                         System.out.println("$ exit: fechar programa");
-                        System.out.println("$ show: mostrar informações do usuário");
+                        //System.out.println("$ show: mostrar informações do usuário");
                         System.out.println("$ logout: sair da conta");
+                        System.out.println("$ help: mostrar comandos");
                         break;
                     case "logout":
                         token = null;
@@ -168,17 +192,5 @@ public class Aplicacao {
                 }
             }
         }
-
-        /**
-         * Funções do programa
-         */
-        /**
-         * ENUM
-         */
-//        System.out.println(Categoria.HIGIENE);
-//        
-//        LerFile ler = new LerFile("D:/Faculdade/POO/TrabalhoMercantil/src/assets/");
-//        
-//        System.out.println(ler.view("fornecedores"));
     }
 }

@@ -22,8 +22,8 @@ import java.util.Scanner;
  */
 public class Init {
 
-    File file = new File("D:/Faculdade/POO/TrabalhoMercantil/src/assets/mercantil.json");
-    LerFile ler = new LerFile("D:/Faculdade/POO/TrabalhoMercantil/src/assets/");
+    File file; 
+    LerFile ler;
     Scanner leitor = new Scanner(System.in);
     private boolean adm;
     private String token;
@@ -36,6 +36,15 @@ public class Init {
 //        LerFile ler = new LerFile("");
 //        String var = "";
 //        initRead();
+    }
+    
+    /**
+     *
+     * @param path
+     */
+    public void setPath(String path) {
+        file = new File(path + "mercantil.json");
+        ler = new LerFile(path);
     }
 
     /**

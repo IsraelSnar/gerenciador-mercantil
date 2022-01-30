@@ -36,7 +36,34 @@ public class Produto {
         this.preco = preco;
         this.estoqueAtual = estoqueAtual;
         this.estoqueCritico = estoqueCritico;
+    }
 
+    /**
+     * product
+     */
+    public Produto() {
+    }
+
+    /**
+     *
+     * @param codigoBarras
+     * @param nome
+     * @param descricao
+     * @param categoriaN
+     * @param preco
+     * @param estoqueAtual
+     * @param estoqueCritico
+     */
+    public void newProduct(String codigoBarras, String nome, String descricao, int categoriaN, float preco, int estoqueAtual, int estoqueCritico) {
+        this.codigoBarras = codigoBarras;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.categoriaN = categoriaN;
+        this.categorias = Categorias.values();
+        this.categoria = categorias[categoriaN].name();
+        this.preco = preco;
+        this.estoqueAtual = estoqueAtual;
+        this.estoqueCritico = estoqueCritico;
     }
 
     /**
