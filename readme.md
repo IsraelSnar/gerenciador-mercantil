@@ -22,10 +22,10 @@ Após a instalação do programa na máquina deve ser configurado a mão algumas
     <td align="center">
     <a href="#">
     <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/61364165?s=96&v=4" width="100px;" alt=""/><br />
-    <sub><b>Israel Narciso</b></sub></a><br />
-    <a href="#" title="">👨‍🚀</a></td>
+    <sub><b>Israel Narciso</b></sub></a>
+    <a href="#" title="">👨‍🚀</a></td><br/>
     <td align="center">
     <a href="#"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/38361266?v=4" width="100px;" alt=""/><br />
-    <sub><b>João Alves</b></sub></a><br />
+    <sub><b>João Alves</b></sub></a>
     <a href="#" title="">👨‍🚀</a></td>
 </tr>
