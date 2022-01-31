@@ -15,5 +15,6 @@ public enum Categorias {
     MERCEARIA_EM_GERAL,
     CARNES,
     UTILIDADES,
+    PERECIVEL,
     OUTROS;
 }

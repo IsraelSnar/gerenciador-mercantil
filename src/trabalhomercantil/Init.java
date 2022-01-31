@@ -24,6 +24,7 @@ public class Init {
 
     File file; 
     LerFile ler;
+    private String path;
     Scanner leitor = new Scanner(System.in);
     private boolean adm;
     private String token;
@@ -36,15 +37,6 @@ public class Init {
 //        LerFile ler = new LerFile("");
 //        String var = "";
 //        initRead();
-    }
-    
-    /**
-     *
-     * @param path
-     */
-    public void setPath(String path) {
-        file = new File(path + "mercantil.json");
-        ler = new LerFile(path);
     }
 
     /**
@@ -127,21 +119,21 @@ public class Init {
      *
      * @param user
      * @param pass
-     * @return se logou ou nao
      */
-    public String login(String user, String pass) {
+    public void login(String user, String pass) {
 
         //ler.view("funcionarios");
-        boolean get = ler.viewLogin("D:/Faculdade/POO/TrabalhoMercantil/src/assets/funcionarios", user, pass);
+        boolean get = ler.viewLogin(getPath() + "funcionarios", user, pass);
         //System.out.println(get);
         if (get) {
             System.out.println(Cor.getANSI_GREEN() + "logado" + Cor.getANSI_RESET());
             setAdm(ler.isAdm());
-            return ler.getToken();
+            setToken(ler.getToken());
+//            return ler.getToken();
         } else {
             System.err.println("Erro: usuário ou senha incorretos");
             System.err.println("Tente novamente, caso o erro persista entre em contato com o admin");
-            return null;
+            //return null;
         }
     }
 
@@ -245,6 +237,37 @@ public class Init {
 
     void reset(boolean adm) {
 
+    }
+    
+    /**
+     *
+     * @param path
+     */
+    public void setPath(String path) {
+        this.path = path;
+        file = new File(path + "mercantil.json");
+        ler = new LerFile(path);
+    }
+
+    /**
+     * @return the path
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * @return the token
+     */
+    public String getToken() {
+        return token;
+    }
+
+    /**
+     * @param token the token to set
+     */
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }
