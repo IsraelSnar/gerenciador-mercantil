@@ -1,5 +1,16 @@
+package trabalhomercantil;
+
+/**
+ *
+ * @author israe
+ */
 public class App {
     
+    /**
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
         //variaveis que vão ser utilizada futuramente
@@ -37,7 +48,7 @@ public class App {
        Estoque estoque = new Estoque();
        estoque.adcionarProduto(p);
 
-       Pdv pontoDeVenda = new Pdv();
+       Venda pontoDeVenda = new Venda();
 
        pontoDeVenda.adcionarItem(estoque, "1234567890123", 80);
 

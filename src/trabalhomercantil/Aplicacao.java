@@ -21,6 +21,8 @@ public class Aplicacao {
         // TODO code application logic here
 
         String path = "D:/Faculdade/POO/TrabalhoMercantil/src/assets/";
+        boolean adm;
+        String token;
 
         /**
          * Ler arquivo 'mercantil.json' e verifica se possui 0 Caso possua então
@@ -37,38 +39,37 @@ public class Aplicacao {
          * Função de login De acordo com o acesso ele poderá fazer determinadas
          * funções
          */
-        
 
         iniciar.setPath(path);
 
         System.out.println("Login");
         System.out.println("Informe usuário e senha separados por espaço");
         System.out.print("~ ");
-        
+
         try (Scanner leitor = new Scanner(System.in)) {
             String line = leitor.nextLine();
             String ui[] = line.split(" ");
-            
+
             if ((ui.length < 2)) {
                 if (ui[0].equals("0")) {
                     System.exit(0);
                 }
-                
             } else {
-                System.out.println("Usuário: " + ui[0] + "\n\rSenha: " + ui[1]);
+                System.out.println("Usuário: " + ui[0] + "\n\r Senha: " + ui[1]);
                 iniciar.login(ui[0], ui[1]);
             }
-            
+            token = iniciar.getToken();
+            adm = iniciar.isAdm();
+
             SUPER:
             while (true) {
-                
-                while (iniciar.getToken() == null) {
+                while (token == null) {
                     System.out.println("Informe usuário e senha separados por espaço");
                     System.out.println("Ou digite 0 para finalizar o programa");
                     System.out.print("~ ");
                     line = leitor.nextLine();
                     ui = line.split(" ");
-                    
+
                     //System.out.println("tamanho do array[ui]: " + ui.length);
                     if ((ui.length < 2)) {
                         if (ui[0].equals("0")) {
@@ -76,15 +77,17 @@ public class Aplicacao {
                         }
                         System.err.println("Erro! Informe usuário e senha");
                     } else {
-                        System.out.println("$ Usuário: " + ui[0] + "Senha: " + ui[1]);
+                        System.out.println("$ Usuário: " + ui[0] + "\r\n Senha: " + ui[1]);
                         iniciar.login(ui[0], ui[1]);
+                        token = iniciar.getToken();
+            adm = iniciar.isAdm();
                     }
                 }
-                
+
                 System.out.println("Escreva 'help' para ver comandos");
-                
+
                 OUTER:
-                while (iniciar.getToken() != null) {
+                while (token != null) {
                     iniciar.initRead(iniciar.isAdm());
                     System.out.print("~ ");
                     //System.out.println("adm: " + adm + "token: " + token);
@@ -93,9 +96,15 @@ public class Aplicacao {
                     switch (ui[0].toLowerCase()) {
                         case "exit":
                             break SUPER;
+                        case "logout":
+                            token = null;
+                            adm = false;
+                            iniciar.logout();
+                            break OUTER;
                         case "show":
                             System.out.println("mostrar dados");
                             System.out.println("Não implementado");
+                            System.out.println("User:" + iniciar.toString());
                             break;
                         case "stock":
                             /**
@@ -194,15 +203,20 @@ public class Aplicacao {
                                 if (ui[0].equals("0")) {
                                     break;
                                 } else {
-                                    if (ui[0].equals("help")) {
-                                        
-                                    } else if (ui[0].equals("new")) {
-                                        
-                                    } else if (ui[0].equals("sangria")) {
-                                        System.out.println("fazer sangria");
-                                        /**
-                                         * tirar diheiro do caixa e colocar no saldo da empresa
-                                         */
+                                    switch (ui[0]) {
+                                        case "help":
+                                            break;
+                                        case "new":
+                                            break;
+                                        case "sangria":
+                                            System.out.println("fazer sangria");
+                                            /**
+                                             * tirar diheiro do caixa e colocar
+                                             * no saldo da empresa
+                                             */
+                                            break;
+                                        default:
+                                            break;
                                     }
                                 }
                             }
@@ -224,9 +238,6 @@ public class Aplicacao {
                             System.out.println("$ logout: sair da conta");
                             System.out.println("$ help: mostrar comandos");
                             break;
-                        case "logout":
-                            iniciar.logout();
-                            break OUTER;
                         default:
                             System.out.println("Comando invalido, digite 'help' para ver comandos");
                             break;

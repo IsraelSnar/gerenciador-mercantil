@@ -158,7 +158,7 @@ public class LerFile {
      * Set token ""
      */
     public void setToken() {
-        this.token = "";
+        this.token = null;
     }
 
     /**

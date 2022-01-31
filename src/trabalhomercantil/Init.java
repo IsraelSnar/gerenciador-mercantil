@@ -146,11 +146,10 @@ public class Init {
         ler.setToken();
         System.out.println("Deseja realizar login em outra conta? [y/N]");
         String a = leitor.nextLine().toUpperCase();
-        if (a.toUpperCase().equals("Y") || !(a.equals(""))) {
-        } else {
+        if (!a.toUpperCase().equals("Y") && a.equals("")) {
             System.out.println("programa encerrado com sucesso");
             System.exit(0);
-        }
+        } 
     }
 
     /**
@@ -270,4 +269,12 @@ public class Init {
         this.token = token;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
+    public String toString(){
+        return "";
+    }
 }
