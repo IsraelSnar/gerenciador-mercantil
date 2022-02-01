@@ -15,7 +15,7 @@
         "user": "gabMac",
         "cpf": "719.223.868-17",
         "cargo": "Admin",
-        "salario": null,
+        "salario": 5000.00,
         "senha": "Cxcgno6a",
         "token": "9Tm0tFg5xMv5bU3Y"
     },
@@ -25,7 +25,7 @@
         "user": "israel",
         "cpf": "719.123.868-17",
         "cargo": "Admin",
-        "salario": null,
+        "salario": 5456.00,
         "senha": "123456",
         "token": "9Tm0tFg5xMv5bU3Z"
     },

@@ -104,7 +104,7 @@ public class Aplicacao {
                         case "show":
                             System.out.println("mostrar dados");
                             System.out.println("Não implementado");
-                            System.out.println("User:" + iniciar.toString());
+                            System.out.println(iniciar.toString());
                             break;
                         case "stock":
                             /**

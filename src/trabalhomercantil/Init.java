@@ -28,6 +28,9 @@ public class Init {
     Scanner leitor = new Scanner(System.in);
     private boolean adm;
     private String token;
+    private String nome;
+    private String cargo;
+    private double salario;
 
     /**
      * Iniciar o programa com informações
@@ -129,6 +132,9 @@ public class Init {
             System.out.println(Cor.getANSI_GREEN() + "logado" + Cor.getANSI_RESET());
             setAdm(ler.isAdm());
             setToken(ler.getToken());
+            setNome(ler.viewVal(getPath() + "funcionarios", "nome", getToken()));
+            setCargo(ler.viewVal(getPath() + "funcionarios", "cargo", getToken()));
+            //setSalario(Double.parseDouble(ler.viewVal(getPath() + "funcionarios", "salario", getToken())));
 //            return ler.getToken();
         } else {
             System.err.println("Erro: usuário ou senha incorretos");
@@ -275,6 +281,51 @@ public class Init {
      */
     @Override
     public String toString(){
-        return "";
+        return "Nome: " + getNome()
+                + "\n\rAdm: " + isAdm()
+                + "\n\rCargo: " + getCargo();
+                //+ "\r\nSalário: " + getSalario();
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the cargo
+     */
+    public String getCargo() {
+        return cargo;
+    }
+
+    /**
+     * @param cargo the cargo to set
+     */
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    /**
+     * @return the salario
+     */
+    public double getSalario() {
+        return salario;
+    }
+
+    /**
+     * @param salario the salario to set
+     */
+    public void setSalario(double salario) {
+        this.salario = salario;
     }
 }

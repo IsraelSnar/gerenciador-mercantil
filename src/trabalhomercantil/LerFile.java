@@ -174,4 +174,43 @@ public class LerFile {
     public void setAdm(boolean adm) {
         this.adm = adm;
     }
+
+    /**
+     *
+     * @param file
+     * @param valor
+     * @param token
+     * @return
+     */
+    public String viewVal(String file, String valor, String token) {
+        JSONParser parser = new JSONParser();
+
+        Object objeto;
+
+        try {
+            objeto = parser.parse(new FileReader(file + ".json"));
+            JSONArray jsonarray = (JSONArray) objeto;
+            //System.out.println("jsonarray size = " + jsonarray.size());
+            for (int i = 0; i < jsonarray.size(); i++) {
+                //System.out.println("i: " + i);
+                JSONObject jsonObject = (JSONObject) jsonarray.get(i);
+//                System.out.println((String) jsonObject.get("nome"));
+                if (jsonObject.get("token").equals(token)) {
+                    //System.out.println((String) jsonObject.get("token"));
+                    System.out.println("Valor: " + valor);
+                    return ((String) jsonObject.get(valor));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return null;
+    }
 }
