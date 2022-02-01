@@ -3,6 +3,13 @@ package trabalhomercantil;
 /**
  *
  * @author João
+ * @param codigoBarras
+ * @param nome
+ * @param descricao
+ * @param categoriaN
+ * @param preco
+ * @param estoqueAtual
+ * @param estoqueCritico
  */
 public class Produto {
 

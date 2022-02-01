@@ -96,7 +96,7 @@ public class LerFile {
                     //System.out.println((String) jsonObject.get("token"));
                     setToken((String) jsonObject.get("token"));
                     String cargo = (String) jsonObject.get("cargo");
-                    if (cargo.equals("Admin")) {
+                    if (cargo.toUpperCase().equals("ADMIN")) {
                         setAdm(true);
                     } else {
                         setAdm(false);
@@ -197,7 +197,6 @@ public class LerFile {
 //                System.out.println((String) jsonObject.get("nome"));
                 if (jsonObject.get("token").equals(token)) {
                     //System.out.println((String) jsonObject.get("token"));
-                    System.out.println("Valor: " + valor);
                     return ((String) jsonObject.get(valor));
                 }
             }

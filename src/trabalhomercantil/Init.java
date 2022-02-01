@@ -30,7 +30,7 @@ public class Init {
     private String token;
     private String nome;
     private String cargo;
-    private double salario;
+    private float salario;
 
     /**
      * Iniciar o programa com informações
@@ -134,7 +134,7 @@ public class Init {
             setToken(ler.getToken());
             setNome(ler.viewVal(getPath() + "funcionarios", "nome", getToken()));
             setCargo(ler.viewVal(getPath() + "funcionarios", "cargo", getToken()));
-            //setSalario(Double.parseDouble(ler.viewVal(getPath() + "funcionarios", "salario", getToken())));
+            setSalario(Float.parseFloat(ler.viewVal(getPath() + "funcionarios", "salario", getToken())));
 //            return ler.getToken();
         } else {
             System.err.println("Erro: usuário ou senha incorretos");
@@ -283,8 +283,8 @@ public class Init {
     public String toString(){
         return "Nome: " + getNome()
                 + "\n\rAdm: " + isAdm()
-                + "\n\rCargo: " + getCargo();
-                //+ "\r\nSalário: " + getSalario();
+                + "\n\rCargo: " + getCargo()
+                + "\r\nSalário: " + getSalario();
     }
 
     /**
@@ -318,14 +318,14 @@ public class Init {
     /**
      * @return the salario
      */
-    public double getSalario() {
+    public float getSalario() {
         return salario;
     }
 
     /**
      * @param salario the salario to set
      */
-    public void setSalario(double salario) {
+    public void setSalario(float salario) {
         this.salario = salario;
     }
 }

@@ -54,7 +54,7 @@ public class App {
 
        pontoDeVenda.mostrarListaDeItens();
 
-       estoque.listarProduto();
+       estoque.listarProdutos();
       
         
 

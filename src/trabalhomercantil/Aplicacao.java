@@ -21,7 +21,6 @@ public class Aplicacao {
         // TODO code application logic here
 
         String path = "D:/Faculdade/POO/TrabalhoMercantil/src/assets/";
-        boolean adm;
         String token;
 
         /**
@@ -32,6 +31,7 @@ public class Aplicacao {
          */
         Init iniciar = new Init();
         Estoque a = new Estoque();
+        Helps help = new Helps();
         /**
          * enviar true or false caso o login seja o administrador ou nao
          */
@@ -51,36 +51,35 @@ public class Aplicacao {
             String ui[] = line.split(" ");
 
             if ((ui.length < 2)) {
-                if (ui[0].equals("0")) {
+                if (ui[0].equals("exit")) {
                     System.exit(0);
+                    //|| ui[0].equals("")
                 }
             } else {
-                System.out.println("Usuário: " + ui[0] + "\n\r Senha: " + ui[1]);
+                System.out.println("$ " + ui[0] + ":" + ui[1]);
                 iniciar.login(ui[0], ui[1]);
             }
             token = iniciar.getToken();
-            adm = iniciar.isAdm();
 
             SUPER:
             while (true) {
                 while (token == null) {
                     System.out.println("Informe usuário e senha separados por espaço");
-                    System.out.println("Ou digite 0 para finalizar o programa");
+                    System.out.println("Ou digite 'exit' para finalizar o programa");
                     System.out.print("~ ");
                     line = leitor.nextLine();
                     ui = line.split(" ");
 
                     //System.out.println("tamanho do array[ui]: " + ui.length);
                     if ((ui.length < 2)) {
-                        if (ui[0].equals("0")) {
+                        if (ui[0].equals("exit")) {
                             System.exit(0);
                         }
                         System.err.println("Erro! Informe usuário e senha");
                     } else {
-                        System.out.println("$ Usuário: " + ui[0] + "\r\n Senha: " + ui[1]);
+                        System.out.println("$ " + ui[0] + ":" + ui[1]);
                         iniciar.login(ui[0], ui[1]);
                         token = iniciar.getToken();
-            adm = iniciar.isAdm();
                     }
                 }
 
@@ -98,13 +97,20 @@ public class Aplicacao {
                             break SUPER;
                         case "logout":
                             token = null;
-                            adm = false;
                             iniciar.logout();
                             break OUTER;
                         case "show":
-                            System.out.println("mostrar dados");
-                            System.out.println("Não implementado");
+//                            System.out.println("mostrar dados");
+//                            System.out.println("Não implementado");
                             System.out.println(iniciar.toString());
+                            break;
+                        case "reset":
+                            if (iniciar.isAdm()) {
+                                System.out.println("Não totalmente implementado");
+                                iniciar.reset(iniciar.isAdm());
+                            } else {
+                                System.out.println("Não tem permissão");
+                            }
                             break;
                         case "stock":
                             /**
@@ -113,67 +119,6 @@ public class Aplicacao {
                             if (iniciar.isAdm()) {
                                 System.out.println("estoque:");
                                 System.out.println("Não implementado");
-                            } else {
-                                System.out.println("Não tem permissão");
-                            }
-                            break;
-                        case "product":
-                            /**
-                             * precisa de permissão
-                             */
-                            if (iniciar.isAdm()) {
-                                System.out.println("Produtos:");
-                                if (ui.length < 2) {
-                                    System.out.println("help produtos: ");
-                                    System.out.println(".. new: novo produto\r\n"
-                                            + ".. list: listar produtos\r\n"
-                                            + ".. show: mostrar produto especifico\r\n"
-                                            + ".. delete: apagar produto especifico\r\n"
-                                            + ".. edit: editar produto especifico");
-                                    break;
-                                }
-                                switch (ui[1]) {
-                                    case "new":
-                                        Produto p = new Produto("1234567890123", "Arroz", "1kg", 1, 5, 100, 20);
-                                        a.adcionarProduto(p);
-                                        p = new Produto("0123456789012", "Arroz", "1kg", 1, 5, 100, 20);
-                                        a.adcionarProduto(p);
-                                        p = new Produto("9876543210987", "Arroz", "1kg", 1, 5, 100, 20);
-                                        a.adcionarProduto(p);
-                                        break;
-                                    case "list":
-                                        a.listarProduto();
-                                        break;
-                                    case "show":
-                                        System.out.println("Informe codigo de barras para encontrar produto ou informe 0 para cancelar");
-                                        line = leitor.nextLine();
-                                        ui = line.split(" ");
-                                        if (ui[0].equals("0")) {
-                                            break;
-                                        } else {
-                                            System.out.println(a.encontrarProduto(ui[0]));
-                                        }
-                                        break;
-                                    case "delete":
-                                        System.out.println("Informe codigo de barras para excluir produto ou informe 0 para cancelar");
-                                        line = leitor.nextLine();
-                                        ui = line.split(" ");
-                                        if (ui[0].equals("0")) {
-                                            break;
-                                        } else {
-                                            a.excluirProduto(ui[0]);
-                                        }
-                                        break;
-                                    case "edit":
-                                        System.out.println("Informe CODIGO_DE_BARRAS NOME DESCRICAO CATEGORIA PRECO");
-                                        System.out.println("O codigo de barras é usado para identificar o produto informe com cuidado");
-                                        line = leitor.nextLine();
-                                        ui = line.split(" ");
-                                        a.editarProduto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]), Integer.parseInt(ui[4]));
-                                        break;
-                                    default:
-                                        break;
-                                }
                             } else {
                                 System.out.println("Não tem permissão");
                             }
@@ -189,24 +134,37 @@ public class Aplicacao {
                                 System.out.println("Não tem permissão");
                             }
                             break;
-                        case "sale":
-                            System.out.println("venda:");
+                        case "sales":
+                            System.out.println("vendas:");
                             System.out.println("Não implementado");
                             break;
                         case "cash":
-                            System.out.println("Caixa:");
+                            System.out.println("Caixa: ");
                             System.out.println("Para sair digite '0'");
-                            System.out.println("Digite 'help' para mostrar comandos");
+                            System.out.println("Digite '↵' (ENTER) para mostrar comandos");
+                            System.out.print("~: ");
                             line = leitor.nextLine();
                             ui = line.split(" ");
+
                             while (true) {
                                 if (ui[0].equals("0")) {
                                     break;
                                 } else {
                                     switch (ui[0]) {
-                                        case "help":
+                                        case "":
+                                            help.getHelpCash();
                                             break;
                                         case "new":
+                                            break;
+                                        case "add":
+                                            break;
+                                        case "+":
+                                            break;
+                                        case "finish":
+                                            break;
+                                        case "remove":
+                                            break;
+                                        case "-":
                                             break;
                                         case "sangria":
                                             System.out.println("fazer sangria");
@@ -216,27 +174,116 @@ public class Aplicacao {
                                              */
                                             break;
                                         default:
+                                            System.out.println("Comando invalido; Informe 0 para sair ou '↵' (ENTER) para ajuda");
                                             break;
                                     }
                                 }
-                            }
-                            break;
-                        case "reset":
-                            if (iniciar.isAdm()) {
-                                System.out.println("Não totalmente implementado");
-                                iniciar.reset(iniciar.isAdm());
-                            } else {
-                                System.out.println("Não tem permissão");
+                                System.out.print("~: ");
+                                line = leitor.nextLine();
+                                ui = line.split(" ");
                             }
                             break;
                         case "help":
+                            System.out.println("Para mais informações digite apenas o comando e veja mais informações no help do comando");
                             if (iniciar.isAdm()) {
-                                System.out.println(Cor.getANSI_WHITE_BACKGROUND() + Cor.getANSI_RED() + "$ reset: apagar todos os dados do sistema (exceto logins)" + Cor.getANSI_RESET());
+                                System.err.println("# reset: apagar todos os dados do sistema (exceto logins)");
+                                System.out.println("# stock: apagar todos os dados do sistema (exceto logins)");
+                                System.out.println("# sales: vendas realizadas");
                             }
                             System.out.println("$ exit: fechar programa");
-                            //System.out.println("$ show: mostrar informações do usuário");
+                            System.out.println("$ show: mostrar informações do usuário");
                             System.out.println("$ logout: sair da conta");
                             System.out.println("$ help: mostrar comandos");
+                            System.out.println("$ cash: entrar no caixa");
+                            System.out.println("$ product: produtos; informe '↵' (ENTER) para mostrar comandos");
+                            break;
+                        case "product":
+                            /**
+                             * precisa de permissão
+                             */
+                            if (iniciar.isAdm()) {
+                                System.out.println("Produtos:");
+                                if (ui.length < 2) {
+                                    help.getHelpProduct();
+                                    break;
+                                }
+                                switch (ui[1]) {
+                                    case "new":
+                                        System.out.println("Informe CODIGO; NOME; DESCRICAO; CATEGORIA; PRECO; ESTOQUE; ESTOQUE_CRITICO");
+                                        System.out.println("Digite '↵' (ENTER) para mostrar ajuda em cada parametro");
+                                        System.out.println("Para informar numeros reais (com virgula) use o '.'");
+                                        System.out.print(": ");
+                                        line = leitor.nextLine();
+                                        ui = line.split(";");
+                                        if (ui.length < 2) {
+                                            help.getHelpProductNew();
+                                            System.out.print(": ");
+                                            line = leitor.nextLine();
+                                            ui = line.split(";");
+                                            if (ui.length < 6) {
+                                                System.err.println("Erro: todas as informações não foram inseridas, o produto não foi cadastrado");
+                                            } else {
+                                                Produto p = new Produto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]), Float.parseFloat(ui[4]), Integer.parseInt(ui[5]), Integer.parseInt(ui[6]));
+                                                a.adcionarProduto(p);
+                                            }
+                                        } else {
+                                            if (ui.length < 6) {
+                                                System.err.println("Erro: todas as informações não foram inseridas, o produto não foi cadastrado");
+                                            } else {
+                                                ui[4] = ui[4].replace(',', '.');
+                                                Produto p = new Produto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]), Float.parseFloat(ui[4]), Integer.parseInt(ui[5]), Integer.parseInt(ui[6]));
+                                                a.adcionarProduto(p);
+                                            }
+                                        }
+                                        break;
+                                    case "list":
+                                        a.listarProdutos();
+                                        break;
+                                    case "show":
+                                        System.out.println("Informe codigo de barras para encontrar produto ou informe 0 para cancelar");
+                                        System.out.print(": ");
+                                        line = leitor.nextLine();
+                                        ui = line.split(" ");
+                                        if (ui[0].equals("0")) {
+                                            break;
+                                        } else {
+                                            System.out.println(a.encontrarProduto(ui[0]));
+                                        }
+                                        break;
+                                    case "delete":
+                                        System.out.println("Informe codigo de barras para excluir produto ou informe 0 para cancelar");
+                                        line = leitor.nextLine();
+                                        System.out.print(": ");
+                                        ui = line.split(" ");
+                                        if (ui[0].equals("0")) {
+                                            break;
+                                        } else {
+                                            a.excluirProduto(ui[0]);
+                                        }
+                                        break;
+                                    case "edit":
+                                        System.out.println("Informe CODIGO_DE_BARRAS NOME DESCRICAO CATEGORIA PRECO");
+                                        System.out.println("O codigo de barras é usado para identificar o produto informe com cuidado");
+                                        System.out.println("Para ver categorias digite '↵' (ENTER)");
+                                        System.out.print(": ");
+                                        line = leitor.nextLine();
+                                        ui = line.split(" ");
+
+                                        if (ui.length < 2) {
+                                            help.getHelpProductEdit();
+                                        }
+
+                                        System.out.print(": ");
+                                        line = leitor.nextLine();
+                                        ui = line.split(" ");
+                                        a.editarProduto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]), Integer.parseInt(ui[4]));
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            } else {
+                                System.out.println("Não tem permissão");
+                            }
                             break;
                         default:
                             System.out.println("Comando invalido, digite 'help' para ver comandos");

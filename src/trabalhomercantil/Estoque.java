@@ -30,7 +30,7 @@ public class Estoque {
     /**
      * Lista produto
      */
-    public void listarProduto() {
+    public void listarProdutos() {
         System.out.println("LISTA DE PRODUTOS NO ESTOQUE");
         String lista = "";
         for (int i = 0; i < produtos.size(); i++) {

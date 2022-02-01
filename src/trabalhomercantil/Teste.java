@@ -5,8 +5,6 @@
  */
 package trabalhomercantil;
 
-import java.util.Scanner;
-
 /**
  *
  * @author israe
@@ -21,17 +19,22 @@ public class Teste {
         String path = "D:/Faculdade/POO/TrabalhoMercantil/src/assets/";
         Init iniciar = new Init();
         Estoque a = new Estoque();
+        Helps help = new Helps();
 
         iniciar.setPath(path);
 
         iniciar.login("israel", "123456");
+        
+        help.getHelpProduct();
+        
+        help.getHelpProductNew();
 
         //mostrar dados do usuário logado
         //
         Produto p = new Produto("1234567890123", "Arroz - Pai João", "1kg", 10, 5, 100, 20);
         a.adcionarProduto(p);
 
-        p = new Produto("9876543210987", "Feijão", "1kg", 10, 5, 100, 20);
+        /*p = new Produto("9876543210987", "Feijão", "1kg", 10, 5, 100, 20);
         a.adcionarProduto(p);
 
         a.listarProduto();
@@ -43,6 +46,6 @@ public class Teste {
         
         a.listarProduto();
         
-        a.excluirProduto("5515154545454");
+        a.excluirProduto("5515154545454");*/
     }
 }
