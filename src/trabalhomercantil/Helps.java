@@ -15,11 +15,12 @@ public class Helps {
      * Mostra comandos sobre produtos
      */
     public void getHelpProduct(){
-        System.out.println(".. new: novo produto\r\n"
-                                            + ".. list: listar produtos\r\n"
-                                            + ".. show: mostrar produto especifico\r\n"
-                                            + ".. delete: apagar produto especifico\r\n"
-                                            + ".. edit: editar produto especifico");
+        System.out.println("new: novo produto\r\n"
+                                            + "list: listar produtos\r\n"
+                                            + "show: mostrar produto especifico\r\n"
+                                            + "delete: apagar produto especifico\r\n"
+                                            + "edit: editar produto especifico\n\r"
+                + "0: sair do loop");
     }
     
     /**

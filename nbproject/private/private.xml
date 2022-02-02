@@ -5,9 +5,11 @@
         <group>
             <file>file:/D:/Faculdade/POO/TrabalhoMercantil/src/trabalhomercantil/Teste.java</file>
             <file>file:/D:/Faculdade/POO/TrabalhoMercantil/src/trabalhomercantil/Produto.java</file>
+            <file>file:/D:/Faculdade/POO/TrabalhoMercantil/src/front/NewProduto.java</file>
             <file>file:/D:/Faculdade/POO/TrabalhoMercantil/src/trabalhomercantil/Aplicacao.java</file>
-            <file>file:/D:/Faculdade/POO/TrabalhoMercantil/src/assets/funcionarios.json</file>
-            <file>file:/D:/Faculdade/POO/TrabalhoMercantil/src/trabalhomercantil/Helps.java</file>
+            <file>file:/D:/Faculdade/POO/TrabalhoMercantil/src/front/ListProdutos.java</file>
+            <file>file:/D:/Faculdade/POO/TrabalhoMercantil/src/trabalhomercantil/Estoque.java</file>
+            <file>file:/D:/Faculdade/POO/TrabalhoMercantil/src/front/Menu.java</file>
         </group>
     </open-files>
 </project-private>

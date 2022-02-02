@@ -1,0 +1,7 @@
+site_name: Gerenciador de Mercantil
+
+nav:
+    - Home: index.md
+    - Sobre: about.md
+    - Contribuidores: contributors.md
+    - Projeto: project.md

@@ -38,6 +38,19 @@ public class Estoque {
         }
         System.out.println(lista);
     }
+    
+    /**
+     * Lista produtos com uma interface grafica
+     * @return 
+     */
+    public String listProductView() {
+        //System.out.println("LISTA DE PRODUTOS NO ESTOQUE");
+        String lista = "";
+        for (int i = 0; i < produtos.size(); i++) {
+            lista += (i + 1) + " - " + produtos.get(i).toString();
+        }
+        return lista;
+    }
 
     //Editar um Produto do Estoque
     /**
@@ -55,8 +68,9 @@ public class Estoque {
                 produtos.get(i).setDescricao(descricao);
                 produtos.get(i).setCategoriaN(categoriaN);
                 produtos.get(i).setPreco(preco);
+                System.out.println("Produto editado com sucesso");
             } else {
-                System.out.println("Produto não está no Estoque");
+                System.err.println("Produto não está no Estoque");
             }
         }
     }

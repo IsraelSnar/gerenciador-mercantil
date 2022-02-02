@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package trabalhomercantil;
+import front.NewProduto;
 
 /**
  *
@@ -25,14 +26,18 @@ public class Teste {
 
         iniciar.login("israel", "123456");
         
-        help.getHelpProduct();
-        
-        help.getHelpProductNew();
+//        help.getHelpProduct();
+//        
+//        help.getHelpProductNew();
 
         //mostrar dados do usuário logado
         //
         Produto p = new Produto("1234567890123", "Arroz - Pai João", "1kg", 10, 5, 100, 20);
+        NewProduto n = new NewProduto();
+        
         a.adcionarProduto(p);
+        
+        a.editarProduto("1234567890123", "Arroz branco", "5kg", 10, 2.5f);
 
         /*p = new Produto("9876543210987", "Feijão", "1kg", 10, 5, 100, 20);
         a.adcionarProduto(p);

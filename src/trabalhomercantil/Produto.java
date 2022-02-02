@@ -190,12 +190,12 @@ public class Produto {
     @Override
     public String toString() {
 
-        return "Cod: " + getCodigoBarras() + " - "
-                + "Nome: " + getNome() + " - "
-                + "Descrição: " + getDescricao() + " - "
+        return "Cod: " + getCodigoBarras() + "; "
+                + "Nome: " + getNome() + "; "
+                + "Descrição: " + getDescricao() + "; "
                 + "Categoria: " + getCategoria() + "\n\r"
-                + " Preço: R$ " + getPreco() + " - "
-                + "Estoque Atual: " + getEstoqueAtual() + " - "
-                + "Estoque Critico: " + getEstoqueCritico() + "\n";
+                + " Preço: R$ " + getPreco() + "; "
+                + "Estoque Atual: " + getEstoqueAtual() + "; "
+                + "Estoque Critico: " + getEstoqueCritico() + "\n\r";
     }
 }

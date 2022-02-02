@@ -203,83 +203,87 @@ public class Aplicacao {
                              */
                             if (iniciar.isAdm()) {
                                 System.out.println("Produtos:");
-                                if (ui.length < 2) {
-                                    help.getHelpProduct();
-                                    break;
-                                }
-                                switch (ui[1]) {
-                                    case "new":
-                                        System.out.println("Informe CODIGO; NOME; DESCRICAO; CATEGORIA; PRECO; ESTOQUE; ESTOQUE_CRITICO");
-                                        System.out.println("Digite '↵' (ENTER) para mostrar ajuda em cada parametro");
-                                        System.out.println("Para informar numeros reais (com virgula) use o '.'");
-                                        System.out.print(": ");
-                                        line = leitor.nextLine();
-                                        ui = line.split(";");
-                                        if (ui.length < 2) {
-                                            help.getHelpProductNew();
+
+                                DOWN:
+                                while (true) {
+                                    System.out.print("~: ");
+                                    line = leitor.nextLine();
+                                    ui = line.split(" ");
+                                    switch (ui[0]) {
+                                        case "":
+                                            help.getHelpProduct();
+                                            break;
+                                        case "0":
+                                            System.out.println("Saiu do loop");
+                                            break DOWN;
+                                        case "new":
+                                            System.out.println("Digite '↵' (ENTER) para mostrar ajuda em cada parametro");
+                                            System.out.println("Para informar numeros reais (com virgula) use o '.'");
+                                            while (true) {
+                                            System.out.println("Informe CODIGO; NOME; DESCRICAO; CATEGORIA; PRECO; ESTOQUE; ESTOQUE_CRITICO");
+                                                System.out.print(": ");
+                                                line = leitor.nextLine();
+                                                ui = line.split(";");
+                                                if (ui[0].equals("")) {
+                                                    help.getHelpProductNew();
+                                                } else if (ui[0].equals("0")) {
+                                                    break;
+                                                } else if (ui.length < 6) {
+                                                    System.err.println("Erro: todas as informações não foram inseridas, o produto não foi cadastrado");
+                                                } else {
+                                                    ui[4] = ui[4].replace(',', '.');
+                                                    Produto p = new Produto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]), Float.parseFloat(ui[4]), Integer.parseInt(ui[5]), Integer.parseInt(ui[6]));
+                                                    a.adcionarProduto(p);
+                                                }
+                                            }
+                                            break;
+                                        case "list":
+                                            a.listarProdutos();
+                                            break;
+                                        case "show":
+                                            System.out.println("Informe codigo de barras para encontrar produto ou informe 0 para cancelar");
                                             System.out.print(": ");
                                             line = leitor.nextLine();
-                                            ui = line.split(";");
-                                            if (ui.length < 6) {
-                                                System.err.println("Erro: todas as informações não foram inseridas, o produto não foi cadastrado");
+                                            ui = line.split(" ");
+                                            if (ui.length < 2) {
+                                                System.err.println("Erro: informe código de barras junto ao comando");
                                             } else {
-                                                Produto p = new Produto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]), Float.parseFloat(ui[4]), Integer.parseInt(ui[5]), Integer.parseInt(ui[6]));
-                                                a.adcionarProduto(p);
+                                                System.out.println(a.encontrarProduto(ui[1]));
                                             }
-                                        } else {
-                                            if (ui.length < 6) {
-                                                System.err.println("Erro: todas as informações não foram inseridas, o produto não foi cadastrado");
+                                            break;
+                                        case "delete":
+//                                            System.out.println("Informe codigo de barras para excluir produto ou informe 0 para cancelar");
+//                                            line = leitor.nextLine();
+//                                            System.out.print(": ");
+//                                            ui = line.split(" ");
+                                            if (ui.length < 20) {
+                                                System.err.println("Erro: informe código de barras junto ao comando");
                                             } else {
-                                                ui[4] = ui[4].replace(',', '.');
-                                                Produto p = new Produto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]), Float.parseFloat(ui[4]), Integer.parseInt(ui[5]), Integer.parseInt(ui[6]));
-                                                a.adcionarProduto(p);
+                                                a.excluirProduto(ui[1]);
                                             }
-                                        }
-                                        break;
-                                    case "list":
-                                        a.listarProdutos();
-                                        break;
-                                    case "show":
-                                        System.out.println("Informe codigo de barras para encontrar produto ou informe 0 para cancelar");
-                                        System.out.print(": ");
-                                        line = leitor.nextLine();
-                                        ui = line.split(" ");
-                                        if (ui[0].equals("0")) {
                                             break;
-                                        } else {
-                                            System.out.println(a.encontrarProduto(ui[0]));
-                                        }
-                                        break;
-                                    case "delete":
-                                        System.out.println("Informe codigo de barras para excluir produto ou informe 0 para cancelar");
-                                        line = leitor.nextLine();
-                                        System.out.print(": ");
-                                        ui = line.split(" ");
-                                        if (ui[0].equals("0")) {
-                                            break;
-                                        } else {
-                                            a.excluirProduto(ui[0]);
-                                        }
-                                        break;
-                                    case "edit":
-                                        System.out.println("Informe CODIGO_DE_BARRAS NOME DESCRICAO CATEGORIA PRECO");
-                                        System.out.println("O codigo de barras é usado para identificar o produto informe com cuidado");
-                                        System.out.println("Para ver categorias digite '↵' (ENTER)");
-                                        System.out.print(": ");
-                                        line = leitor.nextLine();
-                                        ui = line.split(" ");
-
-                                        if (ui.length < 2) {
+                                        case "edit":
+//                                            System.out.println("Informe CODIGO_DE_BARRAS NOME DESCRICAO CATEGORIA PRECO");
+//                                            System.out.println("O codigo de barras é usado para identificar o produto informe com cuidado");
+//                                            System.out.println("Para ver categorias digite '↵' (ENTER)");
+//                                            System.out.print(": ");
+//                                            line = leitor.nextLine();
+//                                            ui = line.split(" ");
                                             help.getHelpProductEdit();
-                                        }
 
-                                        System.out.print(": ");
-                                        line = leitor.nextLine();
-                                        ui = line.split(" ");
-                                        a.editarProduto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]), Integer.parseInt(ui[4]));
-                                        break;
-                                    default:
-                                        break;
+                                            if (ui.length < 2) {
+                                                System.err.println("Erro: informe tudo que é pedido junto ao comando");
+                                            } else {
+                                                a.editarProduto(ui[1], ui[2], ui[3], Integer.parseInt(ui[4]), Integer.parseInt(ui[5]));
+                                            }
+
+//                                            System.out.print(": ");
+//                                            line = leitor.nextLine();
+//                                            ui = line.split(" ");
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                 }
                             } else {
                                 System.out.println("Não tem permissão");
