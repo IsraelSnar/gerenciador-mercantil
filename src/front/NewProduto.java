@@ -53,7 +53,6 @@ public class NewProduto extends javax.swing.JFrame {
         categoriasTxt = new javax.swing.JLabel();
         cadastrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        listar = new javax.swing.JButton();
         sair = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
@@ -114,13 +113,6 @@ public class NewProduto extends javax.swing.JFrame {
             }
         });
 
-        listar.setText("Listar");
-        listar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listarActionPerformed(evt);
-            }
-        });
-
         sair.setText("Sair");
         sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,8 +161,7 @@ public class NewProduto extends javax.swing.JFrame {
                         .addComponent(cadastrar)
                         .addGap(162, 162, 162)
                         .addComponent(categoriasTxt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(listar))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)))
@@ -216,9 +207,7 @@ public class NewProduto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(categoriasTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cadastrar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(listar)
-                        .addComponent(sair))))
+                    .addComponent(sair)))
         );
 
         pack();
@@ -258,25 +247,28 @@ public class NewProduto extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String m = "";
+        String str = "";
         int i = 0;
         for (Categorias c : Categorias.values()) {
-            m += "[" + i + "] " + c + "\n\r";
+            str += "[" + i + "] " + c + "\n\r";
             i++;
         }
-        JOptionPane.showMessageDialog(null, m);
+        JOptionPane.showMessageDialog(null, str);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
-        // TODO add your handling code here:
-        e.listarProdutos();
-    }//GEN-LAST:event_listarActionPerformed
-
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:
+        
         setVisible(false);
     }//GEN-LAST:event_sairActionPerformed
 
+    /**
+     *
+     * @return
+     */
+    public Estoque enviar (){
+        return e;
+    }
     
     /**
      * @param args the command line arguments
@@ -331,7 +323,6 @@ public class NewProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JButton listar;
     private javax.swing.JTextField nome;
     private javax.swing.JTextField price;
     private javax.swing.JButton sair;

@@ -20,6 +20,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
     }
     NewProduto np = new NewProduto();
+    ListProdutos lp = new ListProdutos();
     Estoque e = new Estoque();
 
     /**
@@ -59,6 +60,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setText("Menu");
 
         closeSons.setText("Fechar outros");
+        closeSons.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         closeSons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeSonsActionPerformed(evt);
@@ -122,6 +124,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void listProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listProductActionPerformed
         // TODO add your handling code here:
+        e = np.enviar();
+        //lp.setVisible(true);
+        //lp.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         e.listarProdutos();
     }//GEN-LAST:event_listProductActionPerformed
 
@@ -134,8 +139,16 @@ public class Menu extends javax.swing.JFrame {
     private void closeSonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeSonsActionPerformed
         // TODO add your handling code here:
         np.setVisible(false);
+        lp.setVisible(false);
     }//GEN-LAST:event_closeSonsActionPerformed
 
+    /**
+     *
+     * @param e
+     */
+    public void puxar(Estoque e){
+        this.e = e;
+    }
     /**
      * @param args the command line arguments
      */

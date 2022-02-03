@@ -3,6 +3,10 @@ package trabalhomercantil;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ *
+ * @author israe
+ */
 public class Venda {
     private ArrayList<Item> itens;
     private Item itemLista;
@@ -11,41 +15,73 @@ public class Venda {
     
     Scanner ler = new Scanner(System.in);
 
+    /**
+     * Venda
+     */
     public Venda(){
         itens = new ArrayList<>();
     }
 
+    /**
+     *
+     * @return
+     */
     public Item getItemLista() {
         return itemLista;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getValorTotal() {
         return valorTotal;
     }
 
+    /**
+     *
+     * @param valorTotal
+     */
     public void setValorTotal(float valorTotal) {
         this.valorTotal = valorTotal;
     }
 
+    /**
+     *
+     * @param itemLista
+     */
     public void setItemLista(Item itemLista) {
         this.itemLista = itemLista;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Item> getItens() {
         return itens;
     }
 
-
+    /**
+     *
+     * @param itens
+     */
     public void setItens(ArrayList<Item> itens) {
         this.itens = itens;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getQuantidade() {
         return quantidade;
     }
 
-    
-    
+    /**
+     *
+     * @param quantidade
+     */
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
@@ -53,6 +89,13 @@ public class Venda {
     
 
     //ADICIONA ITEM AO ARRAY LIST DE ITENS
+
+    /**
+     *
+     * @param itemEstoque
+     * @param codigoBarras
+     * @param quantidade
+     */
     public void adcionarItem(Estoque itemEstoque, String codigoBarras, int quantidade){
         setQuantidade(getQuantidade()+ quantidade);
 
@@ -100,6 +143,9 @@ public class Venda {
             }
         }}
 
+    /**
+     * mostra lista de itens
+     */
     public void mostrarListaDeItens(){
 
         float calculoCompra = 0;
@@ -123,12 +169,21 @@ public class Venda {
         
 
     //REMOVE O ITEM
+
+    /**
+     *
+     * @param NumeroItem
+     */
     public void removerItem(int NumeroItem){
 
         //FALTA VALIDAR A REMOÇÃO
         itens.remove(NumeroItem);
     }
 
+    /**
+     *
+     * @return
+     */
     public float finalizarCompra(){
         
         

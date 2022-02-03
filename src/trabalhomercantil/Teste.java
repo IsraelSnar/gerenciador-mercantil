@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package trabalhomercantil;
-import front.NewProduto;
 
 /**
  *
@@ -33,7 +32,6 @@ public class Teste {
         //mostrar dados do usuário logado
         //
         Produto p = new Produto("1234567890123", "Arroz - Pai João", "1kg", 10, 5, 100, 20);
-        NewProduto n = new NewProduto();
         
         a.adcionarProduto(p);
         

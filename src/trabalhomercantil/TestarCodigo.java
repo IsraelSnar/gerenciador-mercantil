@@ -2,8 +2,17 @@ package trabalhomercantil;
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author israe
+ */
 public class TestarCodigo {
     
+    /**
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
         //variaveis que vão ser utilizada futuramente
@@ -53,7 +62,7 @@ public class TestarCodigo {
        pontoDeVenda.adcionarItem(estoque, "1234567890123", 10);
        pontoDeVenda.adcionarItem(estoque, "1234567890000", 2);
        pontoDeVenda.adcionarItem(estoque, "1234567890111", 10);
-
+/*
        pontoDeVenda.mostrarListaDeItens();
        
        int formaPagamento = 0;
@@ -61,10 +70,10 @@ public class TestarCodigo {
        float troco = 0;
        boolean validaFormaPagamento = true;
        
-        System.out.println("VALOR TOTAL DA COMPRA: R$" + pontoDeVenda.finalizarCompra() + "\n" + 
-                "ESCOLHA A FORMA DE PAGAMENTO:" + "\n" + 
-                "1 - DINHEIRO" + "\n" +
-                "2 - CARTÃO" + "\n" + 
+        System.out.println("VALOR TOTAL DA COMPRA: R$" + pontoDeVenda.finalizarCompra() + "\n\r" + 
+                "ESCOLHA A FORMA DE PAGAMENTO:" + "\n\r" + 
+                "1 - DINHEIRO" + "\n\r" +
+                "2 - CARTÃO" + "\n\r" + 
                 "3 - PIX");
         
         while (validaFormaPagamento) {            
@@ -137,6 +146,6 @@ public class TestarCodigo {
 
         
       
-
+*/
     }
 }

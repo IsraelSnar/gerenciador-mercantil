@@ -38,10 +38,9 @@ Recomendamos o uso da IDE netbeans ou Eclipse ou outra que suporte a programaç�
 
  * **0**: sair do loop caixa
  * **↵**: basta dar mostrar enter para mostrar help dos comandos do caixa, vamos tratar deles aqui também
- * **new**: criar nova compra
- * **add** ou **+**: adicionar produto
- * **remove** ou **-**: remover produto
- * **finish**: finalizar compra
+ * **new**: criar nova compra, é um loop que para sair deve ser digitado "0".
+ * **remove** ou **-** {ID}: remover produto, informe o código de barras junto ao comando.
+ * **finish**: finalizar compra, realiza ação de informar método de pagamento.
  * **sangria**: realizar sangria, remove dinheiro do caixa e adiciona ao saldo da empresa
 
 #### Product
