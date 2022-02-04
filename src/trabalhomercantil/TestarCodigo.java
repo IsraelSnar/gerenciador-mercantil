@@ -62,7 +62,7 @@ public class TestarCodigo {
        pontoDeVenda.adcionarItem(estoque, "1234567890123", 10);
        pontoDeVenda.adcionarItem(estoque, "1234567890000", 2);
        pontoDeVenda.adcionarItem(estoque, "1234567890111", 10);
-/*
+
        pontoDeVenda.mostrarListaDeItens();
        
        int formaPagamento = 0;
@@ -146,6 +146,6 @@ public class TestarCodigo {
 
         
       
-*/
+
     }
 }

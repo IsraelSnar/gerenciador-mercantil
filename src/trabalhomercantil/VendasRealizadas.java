@@ -20,7 +20,7 @@ public class VendasRealizadas {
     
     public void listarVendasRealizadas(){
         
-        System.out.println("VENDAS REALIZDAS" + "\n" + "Total: " + vendasRealizadas.size());
+        System.out.println("VENDAS REALIZADAS" + "\n" + "Total: " + vendasRealizadas.size());
         
         for (int i = 0; i < vendasRealizadas.size(); i++) {
             System.out.println((i+1) + " - R$ " + vendasRealizadas.get(i));    

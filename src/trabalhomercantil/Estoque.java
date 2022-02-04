@@ -17,16 +17,24 @@ public class Estoque {
 
     }
 
-    //Adicionar Produto ao Estoque
+    // Adicionar Produto ao Estoque
     /**
      *
      * @param produto
      */
     public void adcionarProduto(Produto produto) {
+
+        for (int i = 0; i < produtos.size(); i++) {
+            if (produtos.get(i).getCodigoBarras().equals(produto.getCodigoBarras())) {
+                System.out.println("FALHA AO ADICIONAR PRODUTO! PRODUTO INSERIDO JÁ ESTÁ NO ESTOQUE ");
+                return;
+            }
+        }
         produtos.add(produto);
+
     }
 
-    //Ver Produtos do Estoque
+    // Ver Produtos do Estoque
     /**
      * Lista produto
      */
@@ -38,13 +46,14 @@ public class Estoque {
         }
         System.out.println(lista);
     }
-    
+
     /**
      * Lista produtos com uma interface grafica
-     * @return 
+     * 
+     * @return
      */
     public String listProductView() {
-        //System.out.println("LISTA DE PRODUTOS NO ESTOQUE");
+        // System.out.println("LISTA DE PRODUTOS NO ESTOQUE");
         String lista = "";
         for (int i = 0; i < produtos.size(); i++) {
             lista += (i + 1) + " - " + produtos.get(i).toString();
@@ -52,7 +61,7 @@ public class Estoque {
         return lista;
     }
 
-    //Editar um Produto do Estoque
+    // Editar um Produto do Estoque
     /**
      *
      * @param codigoBarras
@@ -68,31 +77,25 @@ public class Estoque {
                 produtos.get(i).setDescricao(descricao);
                 produtos.get(i).setCategoriaN(categoriaN);
                 produtos.get(i).setPreco(preco);
-                System.out.println("Produto editado com sucesso");
-            } else {
-                System.err.println("Produto não está no Estoque");
+                System.out.println("Estoque: Produto editado com sucesso");
+                return;
             }
+
         }
+        System.err.println("Estoque: Produto não está no Estoque");
     }
 
-    //Adicionar Produto ao Estoque
+    // Adicionar Produto ao Estoque
     /**
      *
      * @param codigoBarras
      */
     public void excluirProduto(String codigoBarras) {
-//        for (int i = 0; i < produtos.size(); i++) {
-//            if (codigoBarras.equals(produtos.get(i).getCodigoBarras())) {
-//                produtos.remove(produtos.get(i));
-//                System.out.println("Produto Encontrado e Removido");
-//                return;
-//            }
-//        }
-//        System.out.println("Produto não está no Estoque");
-        if (produtos.remove(encontrarProduto(codigoBarras))){
+
+        if (produtos.remove(encontrarProduto(codigoBarras))) {
             System.out.println("Removido com sucesso");
         }
-        
+
     }
 
     /**
@@ -103,11 +106,11 @@ public class Estoque {
     public Produto encontrarProduto(String codigoBarras) {
         for (int i = 0; i < produtos.size(); i++) {
             if (codigoBarras.equals(produtos.get(i).getCodigoBarras())) {
-                System.out.println("Produto Encontrado ");
+                System.out.println("Estoque: Produto Encontrado ");
                 return produtos.get(i);
             }
         }
-        System.err.println("Produto não está no Estoque");
+        System.err.println("Estoque: Produto não está no Estoque");
         return null;
     }
 

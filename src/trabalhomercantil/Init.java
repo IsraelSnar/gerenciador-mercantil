@@ -129,7 +129,8 @@ public class Init {
         boolean get = ler.viewLogin(getPath() + "funcionarios", user, pass);
         //System.out.println(get);
         if (get) {
-            System.out.println(Cor.getANSI_GREEN() + "logado" + Cor.getANSI_RESET());
+            //System.out.println(Cor.getANSI_GREEN() + "logado" + Cor.getANSI_RESET());
+            System.out.println("logado");
             setAdm(ler.isAdm());
             setToken(ler.getToken());
             setNome(ler.viewVal(getPath() + "funcionarios", "nome", getToken()));

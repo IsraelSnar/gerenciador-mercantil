@@ -58,7 +58,8 @@ public class Helps {
                 + "\n\r$ finish: finalizar compra"
                 + "\n\r$ sangria: realizar sangria - remover dinheiro do caixa"
                 + "\n\r$ remove {id} | - {id}: remover produto, passando o codigo de barras"
-                + "\n\r$ 0: sair do caixa");
+                + "\n\r$ 0: sair do caixa"
+                + "\n\r$ show: listar itens da compra atual");
     }
     
 }

@@ -42,6 +42,7 @@ Recomendamos o uso da IDE netbeans ou Eclipse ou outra que suporte a programaç�
  * **remove** ou **-** {ID}: remover produto, informe o código de barras junto ao comando.
  * **finish**: finalizar compra, realiza ação de informar método de pagamento.
  * **sangria**: realizar sangria, remove dinheiro do caixa e adiciona ao saldo da empresa
+ * **show**: listar itens da compra atual
 
 #### Product
  * **↵**: basta digitar `product` e dar enter para entrar no loop

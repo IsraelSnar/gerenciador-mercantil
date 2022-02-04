@@ -15,6 +15,10 @@ public class ContaBancaria {
         this.saldo = saldo;
     }
 
+    public ContaBancaria(){
+        this.saldo = 0;
+    }
+
     /**
      *
      * @return

@@ -104,7 +104,7 @@ public class Venda {
             //VERIFICA SE TEM O PRODUTO NO ESTOQUE
             if(itemEstoque.getProdutos().get(i).getCodigoBarras().equals(codigoBarras)){
 
-                System.out.println("Produto disponivel no estoque");
+                System.out.println("Classe Venda: Produto disponivel no estoque");
                 
                 //VERIFICA SE A QUANTIDADE DE PRODUTO É MAIOR QUE A DISPONÍVEL OU SE É IGUAL A 0
                 if(quantidade > itemEstoque.getProdutos().get(i).getEstoqueAtual() || quantidade == 0){
@@ -139,7 +139,7 @@ public class Venda {
             
             //CASO O PRODUTO NÃO ESTEJA NO ESTOQUE
             else {
-                System.out.println("Produto não esta no estoque");
+                System.out.println("Classe Venda: Produto não esta no estoque");
             }
         }}
 
