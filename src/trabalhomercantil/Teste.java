@@ -27,13 +27,14 @@ public class Teste {
 
         iniciar.login("israel", "123456");
 
-        Produto p = new Produto("5156165616", "Arroz", "1kg", 10, 5, 100, 20);
-        if (a.adcionarProduto(p)) {
-            products.escreverProduct(p);
-        }
+        // Produto p = new Produto("5156165616", "Arroz", "1kg", 10, 5, 100, 20);
+        // if (a.adcionarProduto(p)) {
+        //     products.escreverProduct(p);
+        // }
 
-        products.editProducts(a.editarProduto("5165165165", "Arroz branco", "5kg", 10, 2.5f), a);
+        // products.editProducts(a.editarProduto("5165165165", "Arroz branco", "5kg", 10, 2.5f), a);
 
+        products.delete("1234567890123");
         /*
          * String str = "algo";
          * 

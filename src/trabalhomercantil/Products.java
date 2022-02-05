@@ -127,7 +127,7 @@ public class Products {
         if (p != null) {
             for (int i = 0; i < e.getProdutos().size(); i++) {
                 if (e.getProdutos().get(i).getCodigoBarras().equals(p.getCodigoBarras())) {
-                    //System.out.println("informação encontrada");
+                    // System.out.println("informação encontrada");
 
                     data += "\n    {\n        \"codigo\": \"" + p.getCodigoBarras() +
                             "\",\n        \"nome\": \"" + p.getNome() +
@@ -207,6 +207,92 @@ public class Products {
             return false;
         }
 
+    }
+
+    public void delete(String id) {
+        String str[] = new String[7];
+        data = "[";
+
+        /**
+         * str[0] = codigo
+         * str[1] = nome
+         * str[2] = descricao
+         * str[3] = categoria
+         * str[4] = preco
+         * str[5] = estoque
+         * str[6] = estoqueCritico
+         */
+
+        JSONParser parser = new JSONParser();
+
+        Object objeto;
+
+        try {
+            objeto = parser.parse(new FileReader(iniciar.getPath() + "produtos.json"));
+            JSONArray jsonarray = (JSONArray) objeto;
+            System.out.println("Json Array: " + jsonarray);
+            System.out.println("jsonarray size = " + jsonarray.size());
+
+            for (int i = 0; i < jsonarray.size(); i++) {
+
+                JSONObject jsonObject = (JSONObject) jsonarray.get(i);
+
+                if (jsonObject.get("codigo").equals(id)) {
+
+                } else {
+                    str[0] = (String) jsonObject.get("codigo");
+                    str[1] = (String) jsonObject.get("nome");
+                    str[2] = (String) jsonObject.get("descricao");
+                    str[3] = (String) jsonObject.get("categoria");
+                    str[4] = (String) jsonObject.get("preco");
+                    str[5] = (String) jsonObject.get("estoque");
+                    str[6] = (String) jsonObject.get("estoqueCritico");
+                    data += "\n    {\n        \"codigo\": \"" + str[0] +
+                            "\",\n        \"nome\": \"" + str[1] +
+                            "\",\n        \"descricao\": \"" + str[2] +
+                            "\",\n        \"categoria\":\"" + str[3] +
+                            "\",\n        \"preco\": \"" + str[4] +
+                            "\",\n        \"estoque\": \"" + str[5] +
+                            "\",\n        \"estoqueCritico\": \"" + str[6]
+                            + "\"\n    }";
+                    if (i != jsonarray.size() - 1) {
+                        data += ",";
+                    }
+                }
+
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Products: " + e);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            System.err.println(e);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+        /**
+         * Escrever
+         */
+
+        try (
+
+                OutputStream os = new FileOutputStream(iniciar.getPath() + "produtos.json", false);
+                OutputStreamWriter osw = new OutputStreamWriter(os);
+                BufferedWriter bw = new BufferedWriter(osw);) {
+
+            bw.write(data); // Escreve no arquivo
+            bw.write("]"); // Escreve no arquivo
+            // bw.newLine(); // adiciona caractere de quebra de linha
+            data = "[";
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            System.err.println("Tente novamente, caso o erro persista");
+            System.err.println("entre em contato com o administrador ou programador");
+        }
     }
 
     public void lerTudo() {

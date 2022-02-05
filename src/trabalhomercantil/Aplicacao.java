@@ -397,7 +397,9 @@ public class Aplicacao {
                                             if (ui.length < 2) {
                                                 System.err.println("Erro: informe código de barras junto ao comando");
                                             } else {
-                                                estoque.excluirProduto(ui[1]);
+                                                if (estoque.excluirProduto(ui[1])){
+                                                    products.delete(ui[1]);
+                                                }
                                             }
                                             break;
                                         case "edit":

@@ -1,14 +1,5 @@
 [
     {
-        "codigo": "1234567890123",
-        "nome": "Arroz branco",
-        "descricao": "1kg",
-        "categoria":"10",
-        "preco": "3.5",
-        "estoque": "100",
-        "estoqueCritico": "20"
-    },
-    {
         "codigo": "123",
         "nome": "feijao preto",
         "descricao": "1kg",
@@ -81,15 +72,6 @@
         "estoqueCritico": "20"
     },
     {
-        "codigo": "51561",
-        "nome": "Arroz - Pai Jo?o",
-        "descricao": "1kg",
-        "categoria":"10",
-        "preco": "5.0",
-        "estoque": "100",
-        "estoqueCritico": "20"
-    },
-    {
         "codigo": "54984",
         "nome": "Arroz - Pai Jo?o",
         "descricao": "1kg",
@@ -127,15 +109,6 @@
     },
     {
         "codigo": "5615615",
-        "nome": "Arroz",
-        "descricao": "1kg",
-        "categoria":"10",
-        "preco": "5.0",
-        "estoque": "100",
-        "estoqueCritico": "20"
-    },
-    {
-        "codigo": "5156165616",
         "nome": "Arroz",
         "descricao": "1kg",
         "categoria":"10",

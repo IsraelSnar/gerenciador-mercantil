@@ -1,5 +1,5 @@
-package trabalhomercantil;
 
+package trabalhomercantil;
 import java.util.ArrayList;
 
 /**
@@ -93,12 +93,14 @@ public class Estoque {
      *
      * @param codigoBarras
      */
-    public void excluirProduto(String codigoBarras) {
+    public boolean excluirProduto(String codigoBarras) {
 
         if (produtos.remove(encontrarProduto(codigoBarras))) {
             System.out.println("Removido com sucesso");
+            return true;
         }
-
+        System.out.println("Erro ao remover produto, informe codigo de barras corretamente");
+        return false;
     }
 
     /**
