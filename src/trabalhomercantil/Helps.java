@@ -16,7 +16,7 @@ public class Helps {
      */
     public void getHelpProduct(){
         System.out.println("new: novo produto\r\n"
-                                            + "list: listar produtos\r\n"
+                                            //+ "list: listar produtos\r\n"
                                             + "show: mostrar produto especifico\r\n"
                                             + "delete: apagar produto especifico\r\n"
                                             + "edit: editar produto especifico\n\r"
@@ -32,8 +32,8 @@ public class Helps {
                 + "\r\n$ DESCRICAO: peso do produto (STRING)"
                 + "\r\n$ CATEGORIA: categoria na qual se encaixa o produto (INT)"
                 + "\r\n$ PRECO: preço do produto (FLOAT)"
-                + "\r\n$ ESTOQUE: quantidade de produtos no momento"
-                + "\r\n$ ESTOQUE_CRITICO: quantidade mínima de produtos que deve ter no estoque");
+                + "\r\n$ ESTOQUE: quantidade de produtos no momento (INT)"
+                + "\r\n$ ESTOQUE_CRITICO: quantidade mínima de produtos que deve ter no estoque (INT)");
         getHelpProductEdit();
     }
     
@@ -54,10 +54,9 @@ public class Helps {
      */
     public void getHelpCash(){
         System.out.println("$ new: nova compra"
-                + "\n\r$ add | +: adicionar produto"
                 + "\n\r$ finish: finalizar compra"
-                + "\n\r$ sangria: realizar sangria - remover dinheiro do caixa"
-                + "\n\r$ remove {id} | - {id}: remover produto, passando o codigo de barras"
+                //+ "\n\r$ sangria: realizar sangria - remover dinheiro do caixa"
+                + "\n\r$ remove {id} | - {id}: remover produto, passando o número da lista de compras"
                 + "\n\r$ 0: sair do caixa"
                 + "\n\r$ show: listar itens da compra atual");
     }

@@ -19,36 +19,55 @@ public class Teste {
         String path = "D:/Faculdade/POO/TrabalhoMercantil/src/assets/";
         Init iniciar = new Init();
         Estoque a = new Estoque();
-        Helps help = new Helps();
+        Venda pontoDeVenda = new Venda();
+        Estoque estoque = new Estoque();
+        Caixa caixa = new Caixa(0);
+        VendasRealizadas vendasRealizadas = new VendasRealizadas();
 
         iniciar.setPath(path);
 
         iniciar.login("israel", "123456");
-        
-//        help.getHelpProduct();
-//        
-//        help.getHelpProductNew();
 
-        //mostrar dados do usuário logado
-        //
         Produto p = new Produto("1234567890123", "Arroz - Pai João", "1kg", 10, 5, 100, 20);
-        
+
         a.adcionarProduto(p);
-        
+        p = new Produto("1234567890123", "Arroz - Pai João", "1kg", 10, 5, 100, 20);
+
+        a.adcionarProduto(p);
+        p = new Produto("123", "Feijão - Pai João", "1kg", 10, 5, 100, 20);
+
+        a.adcionarProduto(p);
+        p = new Produto("1234", "Feijão preto", "1kg", 10, 5, 100, 20);
+
+        a.adcionarProduto(p);
+
         a.editarProduto("1234567890123", "Arroz branco", "5kg", 10, 2.5f);
 
-        /*p = new Produto("9876543210987", "Feijão", "1kg", 10, 5, 100, 20);
-        a.adcionarProduto(p);
+        pontoDeVenda.adcionarItem(estoque, "123", 5);
+        pontoDeVenda.adcionarItem(estoque, "1234567890123", 5);
+        pontoDeVenda.adcionarItem(estoque, "1234", 5);
 
-        a.listarProduto();
+        pontoDeVenda.totalCompra();
 
-        p = new Produto("4567891230456", "Arroz - Da Terra", "1kg", 1, 5, 100, 20);
-        a.adcionarProduto(p);
+        caixa.setSaldoCaixa(caixa.getSaldoCaixa() + pontoDeVenda.totalCompra());
+        vendasRealizadas.getVendasRealizada().add(pontoDeVenda.totalCompra());
+        pontoDeVenda.clear();
+        System.out.println("VENDA REALIZADA COM SUCESSO!");
 
-        a.excluirProduto("1234567890123");
-        
-        a.listarProduto();
-        
-        a.excluirProduto("5515154545454");*/
+        /*
+         * p = new Produto("9876543210987", "Feijão", "1kg", 10, 5, 100, 20);
+         * a.adcionarProduto(p);
+         * 
+         * a.listarProduto();
+         * 
+         * p = new Produto("4567891230456", "Arroz - Da Terra", "1kg", 1, 5, 100, 20);
+         * a.adcionarProduto(p);
+         * 
+         * a.excluirProduto("1234567890123");
+         * 
+         * a.listarProduto();
+         * 
+         * a.excluirProduto("5515154545454");
+         */
     }
 }

@@ -70,7 +70,7 @@ public class TestarCodigo {
        float troco = 0;
        boolean validaFormaPagamento = true;
        
-        System.out.println("VALOR TOTAL DA COMPRA: R$" + pontoDeVenda.finalizarCompra() + "\n\r" + 
+        System.out.println("VALOR TOTAL DA COMPRA: R$" + pontoDeVenda.totalCompra() + "\n\r" + 
                 "ESCOLHA A FORMA DE PAGAMENTO:" + "\n\r" + 
                 "1 - DINHEIRO" + "\n\r" +
                 "2 - CARTÃO" + "\n\r" + 
@@ -98,15 +98,15 @@ public class TestarCodigo {
             dinheiroRecebido = ler.nextFloat();
            
             
-            if(dinheiroRecebido == 0 || dinheiroRecebido < 0 || dinheiroRecebido < pontoDeVenda.finalizarCompra()){
-                System.out.println("Valor invalido receba um valor >=" + pontoDeVenda.finalizarCompra());
+            if(dinheiroRecebido == 0 || dinheiroRecebido < 0 || dinheiroRecebido < pontoDeVenda.totalCompra()){
+                System.out.println("Valor invalido receba um valor >=" + pontoDeVenda.totalCompra());
             }
             
             else {
                 caixa.setSaldoCaixa(caixa.getSaldoCaixa() + dinheiroRecebido);
                 //System.out.println("SALDO DO CAIXA COM DINHEIRO RECEBIDO DO CLIENTE: " + caixa.getSaldoCaixa());
                 
-                troco = dinheiroRecebido - pontoDeVenda.finalizarCompra();
+                troco = dinheiroRecebido - pontoDeVenda.totalCompra();
                 System.out.println("TROCO: R$" + troco);
                 
                 caixa.setSaldoCaixa(caixa.getSaldoCaixa() - troco);
@@ -116,13 +116,13 @@ public class TestarCodigo {
         }
         
         else {
-           caixa.setSaldoCaixa(caixa.getSaldoCaixa() + pontoDeVenda.finalizarCompra());
+           caixa.setSaldoCaixa(caixa.getSaldoCaixa() + pontoDeVenda.totalCompra());
            System.out.println("VENDA REALIZADA COM SUCESSO!"); 
         }
         
         VendasRealizadas vendasRealizadas = new VendasRealizadas();
         
-        vendasRealizadas.getVendasRealizada().add(pontoDeVenda.finalizarCompra());
+        vendasRealizadas.getVendasRealizada().add(pontoDeVenda.totalCompra());
         
         vendasRealizadas.listarVendasRealizadas();
        

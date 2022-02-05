@@ -1,3 +1,8 @@
-{"dono": "eu",
- "nome": "atenas",
- "saldo": 5, "cnpj": "54"}
+[
+    {
+        "dono": "eu",
+        "nome": "atenas",
+        "saldo": "5000",
+        "cnpj": "54"
+    }
+]

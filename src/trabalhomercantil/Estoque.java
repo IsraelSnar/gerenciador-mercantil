@@ -22,15 +22,17 @@ public class Estoque {
      *
      * @param produto
      */
-    public void adcionarProduto(Produto produto) {
+    public boolean adcionarProduto(Produto produto) {
 
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getCodigoBarras().equals(produto.getCodigoBarras())) {
-                System.out.println("FALHA AO ADICIONAR PRODUTO! PRODUTO INSERIDO JÁ ESTÁ NO ESTOQUE ");
-                return;
+                System.out.println("FALHA AO ADICIONAR PRODUTO! PRODUTO INSERIDO JÁ ESTÁ NO ESTOQUE");
+                System.out.println();
+                return false;
             }
         }
         produtos.add(produto);
+        return true;
 
     }
 

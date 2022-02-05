@@ -55,6 +55,14 @@ public class Mercantil {
     public ContaBancaria getConta() {
         return conta;
     }
+    
+    /**
+     *
+     * @return
+     */
+    public Float getSaldoConta() {
+        return conta.getSaldo();
+    }
 
     /**
      *
@@ -86,6 +94,14 @@ public class Mercantil {
      */
     public void setConta(ContaBancaria conta) {
         this.conta = conta;
+    }
+    
+    /**
+     *
+     * @param conta
+     */
+    public void setSaldo(Float saldo) {
+        this.conta.setSaldo(saldo);
     }
 
     /**

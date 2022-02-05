@@ -8,7 +8,9 @@ package trabalhomercantil;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -16,13 +18,18 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 /**
  *
  * @author israe
  */
 public class Init {
 
-    File file; 
+    File file;
     LerFile ler;
     private String path;
     Scanner leitor = new Scanner(System.in);
@@ -31,15 +38,20 @@ public class Init {
     private String nome;
     private String cargo;
     private float salario;
+    private float saldo;
+    private String dono;
+    private String empresa;
+    private String cnpj;
+
 
     /**
      * Iniciar o programa com informações
      *
      */
     public Init() {
-//        LerFile ler = new LerFile("");
-//        String var = "";
-//        initRead();
+        // LerFile ler = new LerFile("");
+        // String var = "";
+        // initRead();
     }
 
     /**
@@ -51,45 +63,48 @@ public class Init {
 
             // usando o método getEncoding() da classe InputStreamReader
             // para pegar a codificação usada no arquivo
-            //System.out.println("Codificação do arquivo: " + isr.getEncoding());
+            // System.out.println("Codificação do arquivo: " + isr.getEncoding());
             int intValue;
             // lê o arquivo caractere a caractere e imprime na tela
             while ((intValue = isr.read()) != -1) {
                 char ch = (char) intValue;
-                /*char ch = (char) intValue;
-                System.out.println(ch + " - " + intValue);
-                if (ch == 0) {
-                    System.out.println("tem");
-                    initWrite();
-                } else {
-                    System.out.println("nao tem");
-                }*/
+                /*
+                 * char ch = (char) intValue;
+                 * System.out.println(ch + " - " + intValue);
+                 * if (ch == 0) {
+                 * System.out.println("tem");
+                 * initWrite();
+                 * } else {
+                 * System.out.println("nao tem");
+                 * }
+                 */
                 if (intValue == 48) {
-                    //System.out.println("tem sim");
+                    // System.out.println("tem sim");
                     if (cargo) {
-                        //System.out.println("valor arquivo: " + intValue);
+                        // System.out.println("valor arquivo: " + intValue);
                         initWrite();
                     } else {
-                        //System.out.println("valor arquivo: " + intValue);
+                        // System.out.println("valor arquivo: " + intValue);
                         System.err.println("Sistema não tem informações sobre o estabelecimento");
                         System.err.println("O sistema será encerrado e precisa que o propietario faça primeiro acesso");
                         System.err.println("Entre em contato com o administrador");
                         System.exit(0);
                     }
                 } else {
-                    //System.out.println("valor arquivo: " + intValue);
+                    // System.out.println("valor arquivo: " + intValue);
+
                     break;
                 }
             }
 
-            //System.out.println("Sistema inicializado");
+            // System.out.println("Sistema inicializado");
         } catch (IOException e) {
             System.out.println("ERRO: " + e.getMessage());
         }
     }
 
     private void initWrite() {
-        //System.out.println("Escrever arquivo");
+        // System.out.println("Escrever arquivo");
         try (
                 OutputStream os = new FileOutputStream(file, false);
                 OutputStreamWriter osw = new OutputStreamWriter(os);
@@ -97,13 +112,13 @@ public class Init {
             System.out.println("Informe: DONO NOME_DA_EMPRESA SALDO CNPJ");
             System.out.println("Use ';' para separar cada informação");
             String line = leitor.nextLine();
-            //System.out.println("$" + line);
+            // System.out.println("$" + line);
             String ui[] = line.split(";");
 
             while (!(ui.length > 3)) {
                 System.out.println("vazio insira \"DONO NOME_DA_EMPRESA SALDO CNPJ\" separados por ;");
                 line = leitor.nextLine();
-                //System.out.println("$" + line);
+                // System.out.println("$" + line);
                 ui = line.split(";");
             }
 
@@ -125,22 +140,52 @@ public class Init {
      */
     public void login(String user, String pass) {
 
-        //ler.view("funcionarios");
+        // ler.view("funcionarios");
         boolean get = ler.viewLogin(getPath() + "funcionarios", user, pass);
-        //System.out.println(get);
+        // System.out.println(get);
         if (get) {
-            //System.out.println(Cor.getANSI_GREEN() + "logado" + Cor.getANSI_RESET());
+            // System.out.println(Cor.getANSI_GREEN() + "logado" + Cor.getANSI_RESET());
             System.out.println("logado");
             setAdm(ler.isAdm());
             setToken(ler.getToken());
             setNome(ler.viewVal(getPath() + "funcionarios", "nome", getToken()));
             setCargo(ler.viewVal(getPath() + "funcionarios", "cargo", getToken()));
             setSalario(Float.parseFloat(ler.viewVal(getPath() + "funcionarios", "salario", getToken())));
-//            return ler.getToken();
+            // return ler.getToken();
         } else {
             System.err.println("Erro: usuário ou senha incorretos");
             System.err.println("Tente novamente, caso o erro persista entre em contato com o admin");
-            //return null;
+            // return null;
+        }
+    }
+
+    public void inforMercantil() {
+        JSONParser parser = new JSONParser();
+
+        Object objeto;
+
+        try {
+            objeto = parser.parse(new FileReader(getPath() + "mercantil.json"));
+            JSONArray jsonarray = (JSONArray) objeto;
+            //System.out.println("jsonarray size = " + jsonarray.size());
+            for (int i = 0; i < jsonarray.size(); i++) {
+                //System.out.println("i: " + i);
+                JSONObject jsonObject = (JSONObject) jsonarray.get(i);
+//                System.out.println((String) jsonObject.get("nome"));
+                this.saldo = Float.parseFloat( (String) jsonObject.get("saldo"));
+                this.empresa = (String) jsonObject.get("nome");
+                this.dono = (String) jsonObject.get("dono");
+                this.cnpj = (String) jsonObject.get("cnpj");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println(e);
         }
     }
 
@@ -156,68 +201,8 @@ public class Init {
         if (!a.toUpperCase().equals("Y") && a.equals("")) {
             System.out.println("programa encerrado com sucesso");
             System.exit(0);
-        } 
-    }
-
-    /**
-     *
-     * menu do sistema
-     */
-    /*public void menu() {
-        System.out.println("Informe usuário e senha separados por espaço");
-
-        String line = leitor.nextLine();
-        String ui[] = line.split(" ");
-
-        token = login(ui[0], ui[1]);
-
-        while (true) {
-            while (token == null) {
-                System.out.println("Informe usuário e senha separados por espaço");
-                System.out.println("Ou digite '0' para finalizar o programa");
-
-                line = leitor.nextLine();
-                ui = line.split(" ");
-
-                if (ui[0].equals(0)) {
-                    System.exit(0);
-                }
-
-                System.out.println("Usuário: " + ui[0] + "\n\rSenha: " + ui[1]);
-                token = login(ui[0], ui[1]);
-            }
-
-            OUTER:
-            while (token != null) {
-                adm = isAdm();
-                initRead(adm);
-                System.out.println("Informe opção");
-                System.out.println("Escreva 'help' para ver comandos");
-                line = leitor.nextLine();
-                ui = line.split(" ");
-                switch (ui[0]) {
-                    case "exit":
-                        break OUTER;
-                    case "help":
-                        if (adm) {
-                            System.out.println("reset: fechar programa");
-                        } else {
-                            System.out.println("nao é adm");
-                        }
-                        System.out.println("exit: fechar programa");
-                        System.out.println("sair: sair da conta");
-                        System.out.println("sair: sair da conta");
-                        break;
-                    case "sair":
-                        token = null;
-                        logout();
-                        break;
-                    default:
-                        break;
-                }
-            }
         }
-    }*/
+    }
     /**
      *
      * @return adm
@@ -244,7 +229,7 @@ public class Init {
     void reset(boolean adm) {
 
     }
-    
+
     /**
      *
      * @param path
@@ -281,7 +266,7 @@ public class Init {
      * @return
      */
     @Override
-    public String toString(){
+    public String toString() {
         return "Nome: " + getNome()
                 + "\n\rAdm: " + isAdm()
                 + "\n\rCargo: " + getCargo()
@@ -328,5 +313,40 @@ public class Init {
      */
     public void setSalario(float salario) {
         this.salario = salario;
+    }
+
+    /**
+     * @return the empresa
+     */
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    /**
+     * @return the dono
+     */
+    public String getDono() {
+        return dono;
+    }
+
+    /**
+     * @return the cnpj
+     */
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    /**
+     * @return the saldo
+     */
+    public Float getSaldo() {
+        return saldo;
+    }
+
+    /**
+     * @param saldo the saldo to set
+     */
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
     }
 }

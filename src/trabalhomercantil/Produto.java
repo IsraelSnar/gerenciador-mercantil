@@ -50,9 +50,7 @@ public class Produto {
      * @param codigoBarras
      * @return
      */
-    public boolean validaCodigo(String codigoBarras) {
-        return true;
-    }
+    
 
     /**
      *

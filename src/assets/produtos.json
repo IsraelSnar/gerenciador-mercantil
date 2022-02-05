@@ -3,7 +3,7 @@
         "codigo": "1234567890123",
         "nome": "Arroz branco",
         "descricao": "1kg",
-        "categoria": "PERECIVEL",
+        "categoria": "10",
         "preco": "3.5",
         "estoque": "100",
         "estoqueCritico": "20"

@@ -24,8 +24,10 @@ public class Caixa {
      *
      * @param valor
      */
-    public void sangria(float valor){
+    public Float sangria(float valor){
+        float i = saldoCaixa;
         setSaldoCaixa(saldoCaixa - valor);
+        return i;
     }
 
     /**

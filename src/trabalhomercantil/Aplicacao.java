@@ -34,10 +34,10 @@ public class Aplicacao {
         Helps help = new Helps();
         Caixa caixa = new Caixa(0);
         Produto p = new Produto("", "", "", 0, 0, 0, 0);
-        ContaBancaria cb = new ContaBancaria();
-        // ContaBancaria conta = new ContaBancaria(0);
         Venda pontoDeVenda = new Venda();
         VendasRealizadas vendasRealizadas = new VendasRealizadas();
+        Mercantil mercantil;
+        Products products = new Products(path);
         /**
          * enviar true or false caso o login seja o administrador ou nao
          */
@@ -89,9 +89,14 @@ public class Aplicacao {
                 }
 
                 System.out.println("Escreva 'help' para ver comandos");
+                iniciar.initRead(iniciar.isAdm());
+                iniciar.inforMercantil();
+                mercantil = new Mercantil(iniciar.getEmpresa(), iniciar.getDono(), iniciar.getCnpj(),
+                        iniciar.getSaldo());
+                estoque = products.lerProducts();
 
                 OUTER: while (token != null) {
-                    iniciar.initRead(iniciar.isAdm());
+
                     System.out.print("~ ");
                     // System.out.println("adm: " + adm + "token: " + token);
                     line = leitor.nextLine();
@@ -107,8 +112,9 @@ public class Aplicacao {
                             // System.out.println("mostrar dados");
                             // System.out.println("Não implementado");
                             System.out.println(iniciar.toString());
-                            if (iniciar.isAdm()){
-                                System.out.println(cb.toString());
+                            if (iniciar.isAdm()) {
+                                System.out.printf("Saldo da empresa: %.2f", mercantil.getSaldoConta());
+                                System.out.println();
                             }
                             break;
                         case "reset":
@@ -171,7 +177,7 @@ public class Aplicacao {
                                                 ui = line.split(" ");
                                                 if (ui[0].equals("0")) {
                                                     break;
-                                                } else if (ui.length < 2){
+                                                } else if (ui.length < 2) {
                                                     System.err.println("Erro, informe código de barras e quantidade");
                                                 } else {
                                                     pontoDeVenda.adcionarItem(estoque, ui[0], Integer.parseInt(ui[1]));
@@ -182,7 +188,7 @@ public class Aplicacao {
                                             float troco = 0;
                                             boolean validaFormaPagamento = true;
                                             System.out.println("VALOR TOTAL DA COMPRA: R$"
-                                                    + pontoDeVenda.finalizarCompra() + "\n\r"
+                                                    + pontoDeVenda.totalCompra() + "\n\r"
                                                     + "ESCOLHA A FORMA DE PAGAMENTO:" + "\n\r"
                                                     + "1 - DINHEIRO" + "\n\r"
                                                     + "2 - CARTÃO" + "\n\r"
@@ -207,10 +213,10 @@ public class Aplicacao {
                                                 line = leitor.next();
                                                 ui = line.split(" ");
 
-                                                while (Float.parseFloat(ui[0]) < pontoDeVenda.finalizarCompra()) {
+                                                while (Float.parseFloat(ui[0]) < pontoDeVenda.totalCompra()) {
                                                     System.out
                                                             .println("Valor invalido receba um valor maior ou igual a: "
-                                                                    + pontoDeVenda.finalizarCompra());
+                                                                    + pontoDeVenda.totalCompra());
                                                     line = leitor.next();
                                                     ui = line.split(" ");
                                                 }
@@ -218,32 +224,51 @@ public class Aplicacao {
                                                 // System.out.println("SALDO DO CAIXA COM DINHEIRO RECEBIDO DO CLIENTE:
                                                 // " + caixa.getSaldoCaixa());
 
-                                                troco = Float.parseFloat(ui[0]) - pontoDeVenda.finalizarCompra();
+                                                troco = Float.parseFloat(ui[0]) - pontoDeVenda.totalCompra();
                                                 System.out.println("TROCO: R$ " + troco);
 
                                                 caixa.setSaldoCaixa(caixa.getSaldoCaixa() - troco);
                                                 // System.out.println("SALDO DO CAIXA DPS DO TROCO : " +
                                                 // caixa.getSaldoCaixa());
                                                 System.out.println("VENDA REALIZADA COM SUCESSO!");
-                                                vendasRealizadas.getVendasRealizada().add(pontoDeVenda.finalizarCompra());
+                                                vendasRealizadas.getVendasRealizada().add(pontoDeVenda.totalCompra());
+                                                pontoDeVenda.clear();
 
                                             } else {
                                                 System.out.println("Nao implementado");
                                                 caixa.setSaldoCaixa(
-                                                        caixa.getSaldoCaixa() + pontoDeVenda.finalizarCompra());
+                                                        caixa.getSaldoCaixa() + pontoDeVenda.totalCompra());
                                                 System.out.println("VENDA REALIZADA COM SUCESSO!");
-                                                vendasRealizadas.getVendasRealizada().add(pontoDeVenda.finalizarCompra());
+                                                vendasRealizadas.getVendasRealizada().add(pontoDeVenda.totalCompra());
                                             }
                                             break;
                                         case "remove":
                                             if (ui.length < 2) {
                                                 System.err.println(
-                                                        "Erro, informe \"REMOVE {ID}\" sendo ID o código de barras");
+                                                        "Erro, informe \"REMOVE {ID}\" sendo ID o número da compra, insira 'show' para ver o número do produto");
                                             } else {
-                                                pontoDeVenda.removerItem(Integer.parseInt(ui[1]));
+                                                try {
+                                                    pontoDeVenda.removerItem(Integer.parseInt(ui[1]));
+                                                } catch (Exception e) {
+                                                    // TODO: handle exception
+                                                    System.out.println(
+                                                            "informe o número do item do produto, informe 'show' para ver esse valor");
+                                                }
                                             }
                                             break;
                                         case "-":
+                                            if (ui.length < 2) {
+                                                System.err.println(
+                                                        "Erro, informe \"REMOVE {ID}\" sendo ID o número da compra, insira 'show' para ver o número do produto");
+                                            } else {
+                                                try {
+                                                    pontoDeVenda.removerItem(Integer.parseInt(ui[1]));
+                                                } catch (Exception e) {
+                                                    // TODO: handle exception
+                                                    System.out.println(
+                                                            "informe o número do item do produto, informe 'show' para ver esse valor");
+                                                }
+                                            }
                                             break;
                                         case "show":
                                             pontoDeVenda.mostrarListaDeItens();
@@ -252,8 +277,9 @@ public class Aplicacao {
                                             System.out.println(caixa.getSaldoCaixa());
                                             break;
                                         case "sangria":
-                                            caixa.sangria(caixa.getSaldoCaixa());
-                                            System.out.println("fazer sangria");
+                                            mercantil.setSaldo(
+                                                    mercantil.getSaldoConta() + caixa.sangria(caixa.getSaldoCaixa()));
+                                            System.out.println("Sangria realizada");
                                             /**
                                              * tirar diheiro do caixa e colocar
                                              * no saldo da empresa
@@ -281,7 +307,7 @@ public class Aplicacao {
                             System.out.println("$ logout: sair da conta");
                             System.out.println("$ help: mostrar comandos");
                             System.out.println("$ cash: entrar no caixa");
-                            System.out.println("$ product: produtos; informe '↵' (ENTER) para mostrar comandos");
+                            System.out.println("$ product: produtos");
                             break;
                         case "product":
                             /**
@@ -312,7 +338,7 @@ public class Aplicacao {
                                                 line = leitor.nextLine();
                                                 line = line.replace("; ", ";");
                                                 line = line.replace(" ;", ";");
-                                                
+
                                                 ui = line.split(";");
                                                 if (ui[0].equals("")) {
                                                     help.getHelpProductNew();
@@ -324,10 +350,13 @@ public class Aplicacao {
                                                 } else {
                                                     ui[4] = ui[4].replace(',', '.');
                                                     try {
-                                                        p = new Produto(ui[0], ui[1], ui[2],
-                                                                Integer.parseInt(ui[3]), Float.parseFloat(ui[4]),
-                                                                Integer.parseInt(ui[5]), Integer.parseInt(ui[6]));
+                                                        p = new Produto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]),
+                                                                Float.parseFloat(ui[4]), Integer.parseInt(ui[5]),
+                                                                Integer.parseInt(ui[6]));
                                                         estoque.adcionarProduto(p);
+                                                        /**
+                                                         * criar no json
+                                                         */
                                                     } catch (NumberFormatException e) {
                                                         // TODO: handle exception
                                                         System.err.println(
@@ -338,11 +367,12 @@ public class Aplicacao {
                                             }
                                             break;
                                         case "show":
-                                            System.out.println(
-                                                    "Informe codigo de barras para encontrar produto ou informe 0 para cancelar");
-                                            System.out.print(": ");
-                                            line = leitor.nextLine();
-                                            ui = line.split(" ");
+                                            // System.out.println(
+                                            // "Informe codigo de barras para encontrar produto ou informe 0 para
+                                            // cancelar");
+                                            // System.out.print(": ");
+                                            // line = leitor.nextLine();
+                                            // ui = line.split(" ");
                                             if (ui.length < 2) {
                                                 System.err.println("Erro: informe código de barras junto ao comando");
                                             } else {
@@ -395,6 +425,7 @@ public class Aplicacao {
                                             // ui = line.split(" ");
                                             break;
                                         default:
+                                            System.out.println("Erro! comando não reconhecido");
                                             break;
                                     }
                                 }
