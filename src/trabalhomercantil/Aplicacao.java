@@ -105,12 +105,15 @@ public class Aplicacao {
                         case "exit":
                             break SUPER;
                         case "logout":
+                            
                             token = null;
                             iniciar.logout();
                             break OUTER;
                         case "show":
                             // System.out.println("mostrar dados");
                             // System.out.println("Não implementado");
+                            System.out.println(products.getDados());
+                            System.out.println(products.escreverProduct(p));
                             System.out.println(iniciar.toString());
                             if (iniciar.isAdm()) {
                                 System.out.printf("Saldo da empresa: %.2f", mercantil.getSaldoConta());
@@ -354,6 +357,8 @@ public class Aplicacao {
                                                                 Float.parseFloat(ui[4]), Integer.parseInt(ui[5]),
                                                                 Integer.parseInt(ui[6]));
                                                         estoque.adcionarProduto(p);
+                                                        
+
                                                         /**
                                                          * criar no json
                                                          */
