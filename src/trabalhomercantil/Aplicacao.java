@@ -105,7 +105,7 @@ public class Aplicacao {
                         case "exit":
                             break SUPER;
                         case "logout":
-                            
+
                             token = null;
                             iniciar.logout();
                             break OUTER;
@@ -356,8 +356,10 @@ public class Aplicacao {
                                                         p = new Produto(ui[0], ui[1], ui[2], Integer.parseInt(ui[3]),
                                                                 Float.parseFloat(ui[4]), Integer.parseInt(ui[5]),
                                                                 Integer.parseInt(ui[6]));
-                                                        estoque.adcionarProduto(p);
-                                                        
+                                                        if (estoque.adcionarProduto(p)) {
+                                                            products.escreverProduct(p);
+                                                        }
+                                                        //System.out.println(p);
 
                                                         /**
                                                          * criar no json
@@ -366,8 +368,10 @@ public class Aplicacao {
                                                         // TODO: handle exception
                                                         System.err.println(
                                                                 "Informe apenas números nas informações: categoria, preço, e estoques");
+                                                        
+                                                    } catch (Exception e){
+                                                        System.err.println("Não informe um número fora do array de categorias, dê enter para ver categorias");
                                                     }
-
                                                 }
                                             }
                                             break;

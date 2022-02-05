@@ -71,8 +71,9 @@ public class Estoque {
      * @param descricao
      * @param categoriaN
      * @param preco
+     * @return Produto se editar o produto ou null caso não exista
      */
-    public void editarProduto(String codigoBarras, String nome, String descricao, int categoriaN, float preco) {
+    public Produto editarProduto(String codigoBarras, String nome, String descricao, int categoriaN, float preco) {
         for (int i = 0; i < produtos.size(); i++) {
             if (codigoBarras.equals(produtos.get(i).getCodigoBarras())) {
                 produtos.get(i).setNome(nome);
@@ -80,11 +81,11 @@ public class Estoque {
                 produtos.get(i).setCategoriaN(categoriaN);
                 produtos.get(i).setPreco(preco);
                 System.out.println("Estoque: Produto editado com sucesso");
-                return;
+                return encontrarProduto(codigoBarras);
             }
-
         }
         System.err.println("Estoque: Produto não está no Estoque");
+        return null;
     }
 
     // Adicionar Produto ao Estoque

@@ -45,12 +45,18 @@ public class Produto {
         this.estoqueCritico = estoqueCritico;
     }
 
-    /**
-     *
-     * @param codigoBarras
-     * @return
-     */
-    
+    public Produto(String codigoBarras, String nome, String descricao, String categoria, float preco, int estoqueAtual, int estoqueCritico) {
+        this.codigoBarras = codigoBarras;
+        this.nome = nome;
+        this.descricao = descricao;
+        //this.categoriaN = categoriaN;
+        // this.categorias = Categorias.values();
+        // this.categoria = categorias[categoriaN].name();
+        this.categoria = categoria;
+        this.preco = preco;
+        this.estoqueAtual = estoqueAtual;
+        this.estoqueCritico = estoqueCritico;
+    }
 
     /**
      *

@@ -3,9 +3,143 @@
         "codigo": "1234567890123",
         "nome": "Arroz branco",
         "descricao": "1kg",
-        "categoria": "10",
+        "categoria":"10",
         "preco": "3.5",
         "estoque": "100",
         "estoqueCritico": "20"
-    }
-]
+    },
+    {
+        "codigo": "123",
+        "nome": "feijao preto",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "1234",
+        "nome": "feijao carioca",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "12345",
+        "nome": "batata",
+        "descricao": "1kg",
+        "categoria":"2",
+        "preco": "2.5",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "123456",
+        "nome": "couve",
+        "descricao": "1kg",
+        "categoria":"2",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "12453",
+        "nome": "cenoura",
+        "descricao": "1kg",
+        "categoria":"2",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "0123987",
+        "nome": "Arroz - Pai Jo?o",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "15654",
+        "nome": "Arroz - Pai Jo?o",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "51648",
+        "nome": "Arroz - Pai Jo?o",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "51561",
+        "nome": "Arroz - Pai Jo?o",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "54984",
+        "nome": "Arroz - Pai Jo?o",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "1651",
+        "nome": "Arroz - Pai Jo?o",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "5165165165",
+        "nome": "Arroz branco",
+        "descricao": "5kg",
+        "categoria":"10",
+        "preco": "2.5",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "5168466",
+        "nome": "Arroz",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "5615615",
+        "nome": "Arroz",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    },
+    {
+        "codigo": "5156165616",
+        "nome": "Arroz",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "20"
+    }]
