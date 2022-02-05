@@ -20,7 +20,7 @@ public class Aplicacao {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        String path = "D:/Faculdade/POO/TrabalhoMercantil/src/assets/";
+        String path = "PATH/TrabalhoMercantil/src/assets/";
         String token;
 
         /**
@@ -29,7 +29,7 @@ public class Aplicacao {
          * então apenas pega os dados e continua a proseguir a execução do
          * programa
          */
-        Init iniciar = new Init();
+        Init iniciar = new Init(path);
         Estoque estoque = new Estoque();
         Helps help = new Helps();
         Caixa caixa = new Caixa(0);
@@ -45,8 +45,6 @@ public class Aplicacao {
          * Função de login De acordo com o acesso ele poderá fazer determinadas
          * funções
          */
-
-        iniciar.setPath(path);
 
         System.out.println("Login");
         System.out.println("Informe usuário e senha separados por espaço");
@@ -67,6 +65,11 @@ public class Aplicacao {
             }
             token = iniciar.getToken();
 
+            iniciar.initRead(iniciar.isAdm());
+            iniciar.inforMercantil();
+            mercantil = new Mercantil(iniciar.getEmpresa(), iniciar.getDono(), iniciar.getCnpj(),
+                    iniciar.getSaldo(), path);
+            estoque = products.lerProducts();
             SUPER: while (true) {
                 while (token == null) {
                     System.out.println("Informe usuário e senha separados por espaço");
@@ -89,11 +92,6 @@ public class Aplicacao {
                 }
 
                 System.out.println("Escreva 'help' para ver comandos");
-                iniciar.initRead(iniciar.isAdm());
-                iniciar.inforMercantil();
-                mercantil = new Mercantil(iniciar.getEmpresa(), iniciar.getDono(), iniciar.getCnpj(),
-                        iniciar.getSaldo());
-                estoque = products.lerProducts();
 
                 OUTER: while (token != null) {
 
@@ -105,15 +103,10 @@ public class Aplicacao {
                         case "exit":
                             break SUPER;
                         case "logout":
-
                             token = null;
                             iniciar.logout();
                             break OUTER;
                         case "show":
-                            // System.out.println("mostrar dados");
-                            // System.out.println("Não implementado");
-                            System.out.println(products.getDados());
-                            System.out.println(products.escreverProduct(p));
                             System.out.println(iniciar.toString());
                             if (iniciar.isAdm()) {
                                 System.out.printf("Saldo da empresa: %.2f", mercantil.getSaldoConta());
@@ -136,17 +129,6 @@ public class Aplicacao {
                                 System.out.println("estoque:");
                                 System.out.println("Não implementado");
                                 estoque.listarProdutos();
-                            } else {
-                                System.out.println("Não tem permissão");
-                            }
-                            break;
-                        case "balance":
-                            /**
-                             * precisa de permissão
-                             */
-                            if (iniciar.isAdm()) {
-                                System.out.println("saldo:");
-                                System.out.println("Não implementado");
                             } else {
                                 System.out.println("Não tem permissão");
                             }
@@ -282,7 +264,9 @@ public class Aplicacao {
                                         case "sangria":
                                             mercantil.setSaldo(
                                                     mercantil.getSaldoConta() + caixa.sangria(caixa.getSaldoCaixa()));
+                                            mercantil.editSaldo(mercantil.getSaldoConta());
                                             System.out.println("Sangria realizada");
+                                            System.out.println(mercantil.getSaldoConta());
                                             /**
                                              * tirar diheiro do caixa e colocar
                                              * no saldo da empresa
@@ -330,6 +314,8 @@ public class Aplicacao {
                                         case "0":
                                             System.out.println("Saiu do loop");
                                             break DOWN;
+                                        case "list":
+                                            estoque.listarProdutos();
                                         case "new":
                                             System.out
                                                     .println("Digite '↵' (ENTER) para mostrar ajuda em cada parametro");
@@ -359,7 +345,7 @@ public class Aplicacao {
                                                         if (estoque.adcionarProduto(p)) {
                                                             products.escreverProduct(p);
                                                         }
-                                                        //System.out.println(p);
+                                                        // System.out.println(p);
 
                                                         /**
                                                          * criar no json
@@ -368,20 +354,15 @@ public class Aplicacao {
                                                         // TODO: handle exception
                                                         System.err.println(
                                                                 "Informe apenas números nas informações: categoria, preço, e estoques");
-                                                        
-                                                    } catch (Exception e){
-                                                        System.err.println("Não informe um número fora do array de categorias, dê enter para ver categorias");
+
+                                                    } catch (Exception e) {
+                                                        System.err.println(
+                                                                "Não informe um número fora do array de categorias, dê enter para ver categorias");
                                                     }
                                                 }
                                             }
                                             break;
                                         case "show":
-                                            // System.out.println(
-                                            // "Informe codigo de barras para encontrar produto ou informe 0 para
-                                            // cancelar");
-                                            // System.out.print(": ");
-                                            // line = leitor.nextLine();
-                                            // ui = line.split(" ");
                                             if (ui.length < 2) {
                                                 System.err.println("Erro: informe código de barras junto ao comando");
                                             } else {
@@ -389,15 +370,10 @@ public class Aplicacao {
                                             }
                                             break;
                                         case "delete":
-                                            // System.out.println("Informe codigo de barras para excluir produto ou
-                                            // informe 0 para cancelar");
-                                            // line = leitor.nextLine();
-                                            // System.out.print(": ");
-                                            // ui = line.split(" ");
                                             if (ui.length < 2) {
                                                 System.err.println("Erro: informe código de barras junto ao comando");
                                             } else {
-                                                if (estoque.excluirProduto(ui[1])){
+                                                if (estoque.excluirProduto(ui[1])) {
                                                     products.delete(ui[1]);
                                                 }
                                             }

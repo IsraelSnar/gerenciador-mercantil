@@ -68,6 +68,7 @@ public class Item extends Produto {
         return 
         getCodigoBarras() + " | " + 
         getNome() + " " + getDescricao() + " | " +
+        getQuantidadeNaCompra() + " | " +
         getPreco() + " | " +
         getSubTotal();
     }

@@ -104,8 +104,6 @@ public class Venda {
      * @param NumeroItem
      */
     public void removerItem(int NumeroItem) {
-
-        // FALTA VALIDAR A REMOÇÃO
         itens.remove(NumeroItem);
     }
 

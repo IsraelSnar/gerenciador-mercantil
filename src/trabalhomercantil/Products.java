@@ -71,7 +71,7 @@ public class Products {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         } catch (NumberFormatException e) {
             System.err.println(e);
@@ -127,7 +127,7 @@ public class Products {
         if (p != null) {
             for (int i = 0; i < e.getProdutos().size(); i++) {
                 if (e.getProdutos().get(i).getCodigoBarras().equals(p.getCodigoBarras())) {
-                    // System.out.println("informação encontrada");
+                    
 
                     data += "\n    {\n        \"codigo\": \"" + p.getCodigoBarras() +
                             "\",\n        \"nome\": \"" + p.getNome() +
@@ -140,37 +140,7 @@ public class Products {
                     if (i != e.getProdutos().size() - 1) {
                         data += ",";
                     }
-                    /**
-                     * Pegar o obj json, modificar e escrever de volta
-                     */
-                    // e.getProdutos().get(0).getCodigoBarras();
-
-                    /* for (int j = 0; j < e.getProdutos().size(); i++) { */
-                    /*
-                     * if (e.getProdutos().get(i).getCodigoBarras().equals(p.getCodigoBarras())) {
-                     * data += ",\n    {\n        \"codigo\": \"" + p.getCodigoBarras() +
-                     * "\",\n        \"nome\": \"" + p.getNome() +
-                     * "\",\n        \"descricao\": \"" + p.getDescricao() +
-                     * "\",\n        \"categoria\":\"" + p.getCategoriaN() +
-                     * "\",\n        \"preco\": \"" + p.getPreco() +
-                     * "\",\n        \"estoque\": \"" + p.getEstoqueAtual() +
-                     * "\",\n        \"estoqueCritico\": \"" + p.getEstoqueCritico()
-                     * + "\"\n    }";
-                     * } else {
-                     * data += ",\n    {\n        \"codigo\": \"" +
-                     * e.getProdutos().get(i).getCodigoBarras() +
-                     * "\",\n        \"nome\": \"" + e.getProdutos().get(i).getNome() +
-                     * "\",\n        \"descricao\": \"" + e.getProdutos().get(i).getDescricao() +
-                     * "\",\n        \"categoria\":\"" + e.getProdutos().get(i).getCategoriaN() +
-                     * "\",\n        \"preco\": \"" + e.getProdutos().get(i).getPreco() +
-                     * "\",\n        \"estoque\": \"" + e.getProdutos().get(i).getEstoqueAtual() +
-                     * "\",\n        \"estoqueCritico\": \"" +
-                     * e.getProdutos().get(i).getEstoqueCritico()
-                     * + "\"\n    }";
-                     * }
-                     */
-                    // e.getProdutos().get(i).getCodigoBarras();
-                    // }
+                   
                 } else {
                     data += "\n    {\n        \"codigo\": \"" + e.getProdutos().get(i).getCodigoBarras() +
                             "\",\n        \"nome\": \"" + e.getProdutos().get(i).getNome() +
@@ -266,7 +236,7 @@ public class Products {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         } catch (NumberFormatException e) {
             System.err.println(e);
@@ -301,7 +271,7 @@ public class Products {
 
             // usando o método getEncoding() da classe InputStreamReader
             // para pegar a codificação usada no arquivo
-            // System.out.println("Codificação do arquivo: " + isr.getEncoding());
+            
             dados = "";
             int intValue;
             // lê o arquivo caractere a caractere e imprime na tela

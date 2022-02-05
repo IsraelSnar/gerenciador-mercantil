@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Projeto - Gerenciador de Mercantil</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">Gerenciador de Mercantil</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../index.html" class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../about/index.html" class="nav-link">Sobre</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../contributors/index.html" class="nav-link">Contribuidores</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./index.html" class="nav-link">Projeto</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../contributors/index.html" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#gerenciador-de-mercantil" class="nav-link">Gerenciador de Mercantil</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#sistema-em-java" class="nav-link">Sistema em Java</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sistema" class="nav-link">Sistema</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#comandos-especificos" class="nav-link">Comandos especificos</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="gerenciador-de-mercantil">Gerenciador de Mercantil</h1>
+<h2 id="sistema-em-java">Sistema em Java</h2>
+<p><a href="https://github.com/IsraelSnar/gerenciador-mercantil"><img alt="Build Status" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&amp;logo=java&amp;logoColor=white" /></a></p>
+<p><a href="https://github.com/IsraelSnar/gerenciador-mercantil"><img alt="Build Status" src="https://img.shields.io/badge/Version-1.0-brightgreen" /></a></p>
+<h3 id="configuracao">Configuração</h3>
+<p>Para configurar o sistema, você deve abrir o arquivo <code>Aplicacao.java</code> localizado dentro de <code>src/trabalhomercantil/</code> e na linha <em>23</em> modificar a String <code>PATH/TrabalhoMercantil/src/assets/</code>, substituindo a palavra <code>PATH</code> pelo seu caminho completo até o diretório. 
+<strong>Obs:</strong> não coloque caminho relativo, coloque o caminho completo, desde <code>/</code> ou <code>C:/</code> até o diretório raiz do projeto que já está inserida na String.</p>
+<h3 id="bibliotecas">Bibliotecas</h3>
+<p>O projeto utiliza uma biblioteca, a json-simple, que está no diretório <code>src/packages/</code>, mas você pode baixa-lá clicando <a href="https://code.google.com/archive/p/json-simple/downloads">aqui</a>. Essa biblioteca é usada nesse projeto para ler Json armazenado nos arquivos, carregando algumas informações.</p>
+<h3 id="compilacao">Compilação</h3>
+<p>Recomendamos o uso da IDE netbeans ou Eclipse ou outra que suporte a programação java e consiga conectar-se as bibliotecas e outros arquivos. A construção desse projeto foi realizado no netbeans, e já foi configurado para o caminho relativo e puxar a biblioteca json-simple da pasta assets, caso o projeto seja compilado em outro editor como VS code ou terminal não remova a biblioteca desse diretório pois será lá que o Java irá atrás. Também foi definido o diretório <code>src/packages/</code> como local para puxar qualquer outras bibliotecas, portanto, caso queira modificar o projeto e adicionar bibliotecas externas lá será o local.</p>
+<h2 id="sistema">Sistema</h2>
+<h3 id="comandos">Comandos</h3>
+<ul>
+<li>Help: mostra comandos do sistema</li>
+<li>Show: mostra informações do usuário logado</li>
+<li>Reset: apaga todas as informações do arquivo <em>mercantil.json</em> reiniciando o sistema, mantem ainda dados de login</li>
+<li>Cash: entra no caixa, possui comandos especificos <a href="#cash">veja aqui</a></li>
+<li>Product: entra nos produtos, possui comandos especificos <a href="#product">veja aqui</a></li>
+<li>
+<p>Stock: lista todos os produtos salvos no banco de dados
+ <!-- * Balance:  --></p>
+</li>
+<li>
+<p>Sales: lista todas as vendas realizadas mostrando o valor de cada compra.</p>
+</li>
+</ul>
+<p><strong>Obs:</strong> esses comandos aqui listados tratam apenas de comandos do sistema em geral, dentro do sistema alguns comandos requerem informações a mais, e esses possuem sua própria lista de comandos e ajuda.</p>
+<h3 id="funcoes">Funções</h3>
+<ul>
+<li><strong>Login</strong>: para acessar o sistema, todo funcionário deve realizar</li>
+</ul>
+<h3 id="usuarios">Usuários</h3>
+<p>De início o sistema possui apenas dois tipos principais, sendo: administrador e funcionário caixa. Pode configurar um funcionário com outro tipo de cargo, entretanto não haverá grande diferença pois tem apenas 2 tipos de configurações, para adiministrador ou funcionário. O cargo deve ser configurado com todas as letras em maiúsculo e sem caracteres especiais, letras acentuada ou qualquer outro símbolo, apenas letras.</p>
+<h2 id="comandos-especificos">Comandos especificos</h2>
+<h4 id="cash">Cash</h4>
+<ul>
+<li>
+<p><strong>↵</strong>: basta digitar <code>cash</code> e dar enter para entrar no loop
+<br>Dentro do loop tem:</p>
+</li>
+<li>
+<p><strong>0</strong>: sair do loop caixa</p>
+</li>
+<li><strong>↵</strong>: basta dar mostrar enter para mostrar help dos comandos do caixa, vamos tratar deles aqui também</li>
+<li><strong>new</strong>: criar nova compra, é um loop que para sair deve ser digitado "0".<ul>
+<li><strong>ID</strong>: código de barras </li>
+<li><strong>QUANTIDADE</strong>: quantidade de produtos</li>
+<li><strong>0</strong>: sair do loop de compra</li>
+</ul>
+</li>
+<li><strong>remove</strong> ou <strong>-</strong> {ID}: remover produto, informe o código de barras junto ao comando.</li>
+<li><strong>finish</strong>: finalizar compra, realiza ação de informar método de pagamento.</li>
+<li><strong>sangria</strong>: realizar sangria, remove dinheiro do caixa e adiciona ao saldo da empresa</li>
+<li><strong>show</strong>: listar itens da compra atual</li>
+</ul>
+<h4 id="product">Product</h4>
+<ul>
+<li>
+<p><strong>↵</strong>: basta digitar <code>product</code> e dar enter para entrar no loop
+<br>Dentro do loop temos:</p>
+</li>
+<li>
+<p><strong>0</strong>: sair do loop produto.</p>
+</li>
+<li><strong>↵</strong>: basta dar enter para mostrar help dos comandos do produto.</li>
+<li><strong>new</strong>: novo produto, insira o comando e dê enter, após será pedido as informações para cadastrar o produto<ul>
+<li><strong>código</strong>: código de barras do produto, esse é um codigo único.</li>
+<li><strong>nome</strong>: nome do produto. ex: Arroz, Feijão Pai João...</li>
+<li><strong>descrição</strong>: recomenda-se adicionar o peso. ex: 1kg, 500g, 1l...</li>
+<li><strong>categoria</strong>: Informe o ID da categoria em questão, para ver as categorias <a href="#categorias">veja aqui</a>.</li>
+<li><strong>preço</strong>: preço do produto, troque a vírgula por <code>.</code>(ponto final). Ex: 5.50, 6.00, 1...</li>
+<li><strong>estoque</strong>: quantidade atual de produtos disponíveis.</li>
+<li><strong>estoque crítico</strong>: quantidade mínima que deve ter no estoque.</li>
+<li><strong>Obs:</strong> todas as informações devem ser separadas por <code>;</code>(ponto e vírgula).</li>
+</ul>
+</li>
+<li><strong>list</strong>: listar todos os produtos cadastrados, o comando <a href="#comandos">stock</a> também faz a mesma coisa</li>
+<li><strong>show</strong> {ID}: lista o produto específico, informe o código de barras junto ao comando e será retornado o produto ou uma mensagem informando a inexistência dele.</li>
+<li><strong>delete</strong> {ID}: apaga o produto específico, informe o código de barras junto ao comando, caso exista o produto ele será apagado, caso não retornará uma mensagem de inexistência.</li>
+<li><strong>edit</strong>: editar o produto específico, informe todas as informações pedidas para editar o produto, caso o produto exista será impresso uma mensagem de sucesso, caso contrário uma mensagem de erro informando que o produto não existe. <ul>
+<li><strong>ID</strong>: código de barras do produto, usado para verificar se o mesmo existe no banco de dados</li>
+<li><strong>NOME</strong>: novo nome do produto</li>
+<li><strong>DESCRIÇÃO</strong>: nova descrição/peso do produto</li>
+<li><strong>CATEGORIA</strong>: categoria</li>
+<li><strong>PRECO</strong>: preço do produto</li>
+</ul>
+</li>
+</ul>
+<h4 id="categorias">Categorias</h4>
+<ul>
+<li>[0] <strong>LIMPEZA</strong></li>
+<li>[1] <strong>CONGELADOS_E_FRIOS</strong></li>
+<li>[2] <strong>HORTIFRUTI</strong></li>
+<li>[3] <strong>HIGIENE_PESSOAL</strong></li>
+<li>[4] <strong>BEBIDAS</strong></li>
+<li>[5] <strong>PAPELARIA</strong></li>
+<li>[6] <strong>PADARIA</strong></li>
+<li>[7] <strong>MERCEARIA_EM_GERAL</strong></li>
+<li>[8] <strong>CARNES</strong></li>
+<li>[9]  <strong>UTILIDADES</strong></li>
+<li>[10] <strong>PERECIVEL</strong></li>
+<li>[11] <strong>OUTROS</strong></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

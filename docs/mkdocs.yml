@@ -5,3 +5,4 @@ nav:
     - Sobre: about.md
     - Contribuidores: contributors.md
     - Projeto: project.md
+# theme: readthedocs

@@ -115,4 +115,13 @@
         "preco": "5.0",
         "estoque": "100",
         "estoqueCritico": "20"
+    },
+    {
+        "codigo": "1264165165",
+        "nome": "arroz",
+        "descricao": "1kg",
+        "categoria":"10",
+        "preco": "5.0",
+        "estoque": "100",
+        "estoqueCritico": "30"
     }]

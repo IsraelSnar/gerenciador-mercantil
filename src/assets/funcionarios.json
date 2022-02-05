@@ -48,5 +48,15 @@
         "salario": "5000.00",
         "senha": "123456",
         "token": "9Tm0tFg5xMv5bY3Z"
+    },
+    {
+        "id": 6,
+        "nome": "Admin",
+        "user": "adm",
+        "cpf": "719.321.868-17",
+        "cargo": "ADMIN",
+        "salario": "5000.00",
+        "senha": "123",
+        "token": "9Tm0tFg5xMv6bU3Z"
     }
 ]
