@@ -20,7 +20,7 @@ public class Aplicacao {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        String path = "PATH/TrabalhoMercantil/src/assets/";
+        String path = "src/assets/";
         String token;
 
         /**
